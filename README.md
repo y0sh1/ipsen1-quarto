@@ -1,4 +1,8 @@
-ipsen1-quarto
+IPSEN1 - Quarto
 =============
 
-School project for ipsen1 at Hogeschool Leiden, The Netherlands. Project by INF1G Group 1 of class 2013-2014.
+This project is related to the IPSEN1 assignment, given by Hogeschool Leiden.
+
+## Assignment ##
+
+The given assignment is to digitalize a physical board game. The digital game should cover all the steps and rules as the physical version requires.
