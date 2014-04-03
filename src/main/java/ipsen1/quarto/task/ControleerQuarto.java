@@ -11,4 +11,9 @@ public class ControleerQuarto extends Task {
     public void execute() {
         // TODO: Implementeer mij
     }
+
+    public boolean isGeldigeQuarto() {
+        // TODO: Implementeer mij
+        return false;
+    }
 }

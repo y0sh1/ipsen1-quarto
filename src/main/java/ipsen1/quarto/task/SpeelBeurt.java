@@ -11,4 +11,12 @@ public class SpeelBeurt extends Task {
     public void execute() {
         // TODO: Implementeer mij
     }
+
+    public void kiesPion() {
+        // TODO: Implementeer mij
+    }
+
+    public void plaatsPion() {
+        // TODO: Implementeer mij
+    }
 }

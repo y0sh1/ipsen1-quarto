@@ -1,5 +1,7 @@
 package ipsen1.quarto.task;
 
+import java.io.File;
+
 public class LaadSpel extends Task {
     @Override
     public boolean validate() {
@@ -9,6 +11,10 @@ public class LaadSpel extends Task {
 
     @Override
     public void execute() {
+        // TODO: Implementeer mij
+    }
+
+    public void setSaveGame(File file) {
         // TODO: Implementeer mij
     }
 }

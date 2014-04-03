@@ -11,4 +11,8 @@ public class LeesInstructies extends Task {
     public void execute() {
         // TODO: Implementeer mij
     }
+
+    public void hideInstructies() {
+        // TODO: Implementeer mij
+    }
 }
