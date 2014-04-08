@@ -4,11 +4,12 @@ public class StartNieuwSpel extends Task {
     @Override
     public boolean validate() {
         // TODO: Implementeer mij
-        return false;
+        return true;
     }
 
     @Override
     public void execute() {
         // TODO: Implementeer mij
+        System.out.println("Running StartNieuwSpel");
     }
 }
