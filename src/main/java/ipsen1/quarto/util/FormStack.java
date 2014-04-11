@@ -10,7 +10,9 @@ public class FormStack extends ArrayList<Form> {
      * @return Form
      */
     public Form first() {
-        return this.get(0);
+        if(this.size() > 0)
+            return this.get(0);
+        return null;
     }
 
     /**
@@ -18,7 +20,9 @@ public class FormStack extends ArrayList<Form> {
      * @return Form
      */
     public Form last() {
-        return this.get(this.size() - 1);
+        if(this.size() > 0)
+            return this.get(this.size() - 1);
+        return null;
     }
 
     /**
@@ -26,9 +30,12 @@ public class FormStack extends ArrayList<Form> {
      * @return Form
      */
     public Form pop() {
-        Form f = last();
-        remove(this.size() - 1);
-        return f;
+        if(this.size() > 0) {
+            Form f = last();
+            remove(this.size() - 1);
+            return f;
+        }
+        return null;
     }
 
     /**
@@ -36,8 +43,27 @@ public class FormStack extends ArrayList<Form> {
      * @return Form
      */
     public Form shift() {
-        Form f = first();
-        remove(0);
-        return f;
+        if(this.size() > 0) {
+            Form f = first();
+            remove(0);
+            return f;
+        }
+        return null;
+    }
+
+    /**
+     * Check whether the stack is empty.
+     * @return boolean
+     */
+    public boolean empty() {
+        return this.size() == 0;
+    }
+
+    /**
+     * Check whether the stack isn't empty.
+     * @return boolean
+     */
+    public boolean notEmpty() {
+        return this.size() > 0;
     }
 }
