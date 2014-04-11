@@ -13,6 +13,7 @@ import java.awt.*;
 public class QuartoApplication extends JFrame {
     public static void main(String[] args) {
         QuartoApplication app = new QuartoApplication();
+        app.start(); // Kick off the application
     }
 
     private static QuartoApplication currentApplication = null;
@@ -33,10 +34,15 @@ public class QuartoApplication extends JFrame {
         super("Quarto!");
         currentApplication = this;
 
-        presentForm(new Hoofdmenu());
-
         setResizable(false);
         setLocationRelativeTo(null);
+    }
+
+    /**
+     * This method exists so we can run the application 'headless' for unit testing.
+     */
+    public void start() {
+        presentForm(new Hoofdmenu());
         setVisible(true);
     }
 
@@ -45,8 +51,9 @@ public class QuartoApplication extends JFrame {
      * @param Form f
      */
     public void presentForm(Form f) {
-        if(formStack.size() > 0)
+        if(formStack.notEmpty())
             remove(formStack.last());
+
         formStack.add(f);
         add(f);
         resizeFrame();
@@ -59,10 +66,17 @@ public class QuartoApplication extends JFrame {
      */
     public Form popForm() {
         Form f = formStack.pop();
-        remove(f);
-        add(formStack.last());
-        resizeFrame();
+        if(f != null) remove(f);
+
+        if(formStack.notEmpty()) {
+            add(formStack.last());
+            resizeFrame();
+        }
         return f;
+    }
+
+    public Form currentForm() {
+        return formStack.last();
     }
 
     /**
@@ -70,9 +84,11 @@ public class QuartoApplication extends JFrame {
      * the current form.
      */
     public void resizeFrame() {
-        Dimension dim = formStack.last().getPreferredSize();
-        dim.height += 20;
-        dim.width += 20;
-        setSize(dim);
+        if(formStack.notEmpty()) {
+            Dimension dim = formStack.last().getPreferredSize();
+            dim.height += 20;
+            dim.width += 20;
+            setSize(dim);
+        }
     }
 }
