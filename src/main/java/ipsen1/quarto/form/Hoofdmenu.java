@@ -10,11 +10,12 @@ public class Hoofdmenu extends Form {
     private final String title = "Quarto!";
     private final int width = 800,
                       height = 600;
+    private final int margin = 32;
 
     public Hoofdmenu() {
         super();
         setPreferredSize(new Dimension(width, height));
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(margin, margin));
 
         add(createTitleLabel(), BorderLayout.NORTH);
         add(createButtonsPanel(), BorderLayout.WEST);
@@ -43,7 +44,6 @@ public class Hoofdmenu extends Form {
 
     private JPanel createButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
-        int margin = 32;
         buttonsPanel.setLayout(new GridLayout(5, 1, margin, margin));
 
         for(int i = 0; i < buttons.length; i++) {
