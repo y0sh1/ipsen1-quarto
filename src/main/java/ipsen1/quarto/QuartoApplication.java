@@ -38,7 +38,6 @@ public class QuartoApplication extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
-
     /**
      * This method exists so we can run the application 'headless' for unit testing.
      */

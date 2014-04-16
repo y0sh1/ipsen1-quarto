@@ -5,17 +5,22 @@ import ipsen1.quarto.util.TaskListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Hoofdmenu extends Form {
     private final String title = "Quarto!";
     private final int width = 800,
                       height = 600;
-    private final int margin = 32;
+    private final int vMargin = 32;
+    private final int hMargin = 32;
 
     public Hoofdmenu() {
         super();
         setPreferredSize(new Dimension(width, height));
-        setLayout(new BorderLayout(margin, margin));
+        setLayout(new BorderLayout(hMargin, vMargin));
 
         add(createTitleLabel(), BorderLayout.NORTH);
         add(createButtonsPanel(), BorderLayout.WEST);
@@ -24,7 +29,19 @@ public class Hoofdmenu extends Form {
     private JLabel createTitleLabel() {
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
         titleLabel.setPreferredSize(new Dimension(width, height / 6));
-        titleLabel.setFont(new Font("Calibri", Font.PLAIN, 48));
+
+
+        // Font Ophalen
+        File fontfile = new File("resources/OpenSans-Regular.ttf");
+        Font font;
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, fontfile);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        titleLabel.setFont(font);
 
         return titleLabel;
     }
@@ -44,7 +61,8 @@ public class Hoofdmenu extends Form {
 
     private JPanel createButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setLayout(new GridLayout(5, 1, margin, margin));
+        buttonsPanel.setLayout(new GridLayout(5, 1, hMargin, vMargin));
+
 
 
         for(int i = 0; i < buttons.length; i++) {
