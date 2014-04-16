@@ -34,9 +34,8 @@ public class QuartoApplication extends JFrame {
         super("Quarto!");
         currentApplication = this;
 
-        setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+//        setLocationRelativeTo(null);
     }
 
     /**

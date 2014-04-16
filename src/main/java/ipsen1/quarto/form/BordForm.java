@@ -1,30 +1,56 @@
 package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
+
 import ipsen1.quarto.business.Pion;
-import ipsen1.quarto.form.Form;
+import ipsen1.quarto.business.Spel;
+
+import ipsen1.quarto.form.bord.BeschikbarePionnenForm;
+import ipsen1.quarto.form.bord.Bord;
+import ipsen1.quarto.form.bord.GeselecteerdePionForm;
+import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class BordForm extends Form {
     private final int width = 1024,
-    height = 768;
+                      height = 768;
+
+    private JPanel bord = new Bord(),
+                   beschikbarePionnen = new BeschikbarePionnenForm(),
+                   geselecteerdePionnen = new GeselecteerdePionForm(),
+                   buttonPanel = new QuartoButtonPanel();
+
+    private Spel spel = new Spel();
 
     public BordForm() {
-        super();
+        setupUI();
+    }
+
+    public BordForm(Spel startSpel) {
+        spel = startSpel;
+        setupUI();
+    }
+
+    private void setupUI() {
         setPreferredSize(new Dimension(width, height));
-        add(new JLabel("Hoi, ik ben het bord"));
-        JButton btn = new JButton("Terug");
-        btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                QuartoApplication.currentApplication().popForm();
-            }
-        });
-        add(btn);
+        setLayout(new BorderLayout(0, 0));
+        setBackground(QuartoColor.DARK_BROWN);
+
+        addSubViews();
+    }
+
+    private void addSubViews() {
+        add(bord, BorderLayout.WEST);
+
+        JPanel sidebar = new JPanel();
+        sidebar.setPreferredSize(new Dimension(256, height));
+        sidebar.add(beschikbarePionnen);
+        sidebar.add(geselecteerdePionnen);
+        sidebar.add(buttonPanel);
+        add(sidebar, BorderLayout.EAST);
     }
 
     public void maakWinnaarBekend() {
@@ -41,5 +67,41 @@ public class BordForm extends Form {
 
     public void hideForm() { // De naam `hide` bestaat al in JComponent, maar is deprecated
         // TODO: Implementeer mij
+    }
+
+    private void roepQuarto() {
+        System.out.println("Iemand roept Quarto!");
+        spel.quartoAangeven();
+    }
+
+    public Spel getSpel() {
+        return spel;
+    }
+
+    private class QuartoButtonPanel extends JPanel {
+        private JButton quartoButton = new JButton("Quarto!"),
+                menuButton = new JButton("Menu");
+
+        public QuartoButtonPanel() {
+            setPreferredSize(new Dimension(256, 64));
+            setLayout(new FlowLayout());
+
+            quartoButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    roepQuarto();
+                }
+            });
+            menuButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    QuartoApplication.currentApplication()
+                            .presentForm(new InGameMenu());
+                }
+            });
+
+            add(quartoButton);
+            add(menuButton);
+        }
     }
 }
