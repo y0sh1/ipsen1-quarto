@@ -5,4 +5,5 @@
 *.war
 *.ear
 target
-/.idea/
+/.idea/workspace.xml
+/.idea/tasks.xml
