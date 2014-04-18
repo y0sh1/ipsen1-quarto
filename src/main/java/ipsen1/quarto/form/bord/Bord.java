@@ -1,5 +1,6 @@
 package ipsen1.quarto.form.bord;
 
+import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.util.QuartoColor;
 
@@ -10,19 +11,21 @@ import java.awt.event.ActionListener;
 
 public class Bord extends Form implements ActionListener {
     private final int size = 768;
-    private JLabel statusLabel = new JLabel("TIJDELIJKE STATUS TEKST. AANPASSEN!!!!");
+
+    private JLabel statusLabel = new JLabel();
+
     private JButton[] knoppen = new JButton[4 * 4];
 
-    public Bord() {
+    private Spel spel;
+
+    public Bord(Spel spel) {
+        this.spel = spel;
         setPreferredSize(new Dimension(size, size));
         setLayout(new BorderLayout(100, 100));
         setBackground(QuartoColor.DARK_BROWN);
         setupStatusPaneel();
         setupKnoppen();
-    }
-
-    public void setStatusText(String status) {
-        this.statusLabel.setText(status);
+        setStatus();
     }
 
     private void setupStatusPaneel() {
@@ -71,7 +74,17 @@ public class Bord extends Form implements ActionListener {
         g.drawOval(getWidth() / 2 - 300, 125, 600, 600);
     }
 
-//    Implementeer mij
+    @Override
+    public void redraw() {
+        setStatus();
+        repaint();
+    }
+
+    private void setStatus() {
+        statusLabel.setText(spel.getHuidigeSpeler().getNaam() + " is aan de beurt");
+    }
+
+    //    Implementeer mij
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton source = (JButton)e.getSource();
