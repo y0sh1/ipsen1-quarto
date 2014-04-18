@@ -1,5 +1,7 @@
 package ipsen1.quarto.form.bord;
 
+import ipsen1.quarto.business.Pion;
+import static ipsen1.quarto.business.Pion.*;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.util.QuartoColor;
 
@@ -10,9 +12,12 @@ import java.awt.event.ActionListener;
 
 public class GeselecteerdePionForm extends Form {
     private JButton pionButton;
+    private Pion geselecteerdePion;
 
     public GeselecteerdePionForm() {
         setPreferredSize(new Dimension(256, 320));
+
+        geselecteerdePion = new Pion(Vorm.ROND, Kleur.WIT, Hoogte.HOOG, Hol.HOL);
 
         JLabel geselecteerdePionLabel = new JLabel("Gegeven spelstuk", SwingConstants.CENTER);
         geselecteerdePionLabel.setForeground(Color.WHITE);
@@ -22,7 +27,7 @@ public class GeselecteerdePionForm extends Form {
     }
 
     private void voegButtonToe() {
-        ImageIcon pionIcoon = new ImageIcon("src/main/resources/pionnen/hoog_rond_hol_wit.png");
+        ImageIcon pionIcoon = geselecteerdePion.getImageIcon();
         final int SCALE_FACTOR = 2;
         pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_DEFAULT));
 

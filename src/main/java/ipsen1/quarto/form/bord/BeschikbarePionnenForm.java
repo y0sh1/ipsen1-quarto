@@ -38,7 +38,7 @@ public class BeschikbarePionnenForm extends Form {
     }
 
     private JButton getPionButton(Pion pion) {
-        ImageIcon pionIcoon = new ImageIcon(pion.toFileName());
+        ImageIcon pionIcoon = pion.getImageIcon();
 
         final int SCALE_FACTOR = 8;
         pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_SMOOTH));

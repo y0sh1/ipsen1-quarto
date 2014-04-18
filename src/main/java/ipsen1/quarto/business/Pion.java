@@ -1,5 +1,7 @@
 package ipsen1.quarto.business;
 
+import javax.swing.ImageIcon;
+
 public class Pion {
     private Vorm vorm;
     private Kleur kleur;
@@ -33,7 +35,7 @@ public class Pion {
      * @return String
      */
     public String toFileName() {
-        StringBuilder sb = new StringBuilder(basePath);
+        StringBuilder sb = new StringBuilder(BASE_PATH);
         sb.append(hoogte.name());
         sb.append('_');
         sb.append(vorm.name());
@@ -42,16 +44,20 @@ public class Pion {
         sb.append('_');
         sb.append(kleur.name());
 
-        sb.append(".png");
+        sb.append(IMAGE_EXTENSION);
 
         return sb.toString().toLowerCase();
     }
 
+    public ImageIcon getImageIcon() {
+        return new ImageIcon(this.toFileName());
+    }
 
     /**
      * Basispad naar de map met pion-afbeeldingen
      */
-    private static final String basePath = "src/main/resources/pionnen/";
+    private static final String BASE_PATH = "src/main/resources/pionnen/",
+                               IMAGE_EXTENSION = ".png";
 
     public enum Vorm {
         ROND, VIERKANT
