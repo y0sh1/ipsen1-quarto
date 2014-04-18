@@ -75,7 +75,7 @@ public class Bord extends Form implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton source = (JButton)e.getSource();
-        source.removeActionListener(this);
+        source.removeActionListener(this); //knop is nu niet meer klikbaar
 
         System.out.println(source);
     }

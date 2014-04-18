@@ -46,6 +46,7 @@ public class BordForm extends Form {
         add(bord, BorderLayout.WEST);
 
         JPanel sidebar = new JPanel();
+        sidebar.setBackground(QuartoColor.DARK_BROWN);
         sidebar.setPreferredSize(new Dimension(256, height));
         sidebar.add(beschikbarePionnen);
         sidebar.add(geselecteerdePionnen);
