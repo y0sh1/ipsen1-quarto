@@ -1,8 +1,8 @@
 package ipsen1.quarto.form.bord;
 
+import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.util.QuartoColor;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,8 +12,10 @@ public class Bord extends Form implements ActionListener {
     private final int size = 768;
     private JLabel statusLabel = new JLabel("TIJDELIJKE STATUS TEKST. AANPASSEN!!!!");
     private JButton[] knoppen = new JButton[4 * 4];
+    private Spel spel;
 
-    public Bord() {
+    public Bord(Spel spel) {
+        this.spel = spel;
         setPreferredSize(new Dimension(size, size));
         setLayout(new BorderLayout(100, 100));
         setBackground(QuartoColor.DARK_BROWN);
@@ -78,5 +80,7 @@ public class Bord extends Form implements ActionListener {
         source.removeActionListener(this); //knop is nu niet meer klikbaar
 
         System.out.println(source);
+
+
     }
 }

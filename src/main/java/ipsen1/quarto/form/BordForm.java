@@ -15,15 +15,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class BordForm extends Form {
+    private Spel spel = new Spel();
     private final int width = 1024,
                       height = 768;
 
-    private JPanel bord = new Bord(),
+    private JPanel bord = new Bord(spel),
                    beschikbarePionnen = new BeschikbarePionnenForm(),
                    geselecteerdePionnen = new GeselecteerdePionForm(),
                    buttonPanel = new ButtonPanel();
 
-    private Spel spel = new Spel();
+
 
     public BordForm() {
         setupUI();

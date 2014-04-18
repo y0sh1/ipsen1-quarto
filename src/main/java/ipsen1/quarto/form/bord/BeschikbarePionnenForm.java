@@ -22,7 +22,7 @@ public class BeschikbarePionnenForm extends Form {
     private void setUpUI() {
         setBackground(QuartoColor.DARK_BROWN);
         pionnenButtonsPanel.setLayout(new GridLayout(4, 4));
-
+        pionnenButtonsPanel.setBackground(QuartoColor.DARK_BROWN);
         JLabel beschikbarePionnenLabel = new JLabel("Beschikbare spelstukken");
         beschikbarePionnenLabel.setForeground(Color.WHITE);
         add(beschikbarePionnenLabel);
@@ -44,10 +44,11 @@ public class BeschikbarePionnenForm extends Form {
         pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_SMOOTH));
         JButton pionButton = new JButton(pionIcoon);
 
-        pionButton.setOpaque(false);
         pionButton.setContentAreaFilled(false);
         pionButton.setBorderPainted(false);
+        pionButton.setFocusPainted(false);
         pionButton.addActionListener(new PionButtonActionListener());
+
 
         return pionButton;
     }
@@ -60,6 +61,8 @@ public class BeschikbarePionnenForm extends Form {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Click");
+            JButton source = (JButton)e.getSource();
+            source.setEnabled(false);
         }
     }
 }
