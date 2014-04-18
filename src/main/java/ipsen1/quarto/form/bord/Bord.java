@@ -79,7 +79,6 @@ public class Bord extends Form implements ActionListener {
 
     public void voegIcoonToeAanBord(Pion pion, int vakNummer) {
         ImageIcon pionIcoon = pion.getImageIcon();
-        final int SCALE_FACTOR = 2;
         final int PION_BREEDTE = 75;
         final int PION_HOOGTE = 100;
 
