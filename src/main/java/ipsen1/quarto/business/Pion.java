@@ -28,9 +28,54 @@ public class Pion {
         this.y = y;
     }
 
+    /**
+     * Get the filename for this pawn.
+     * @return String
+     */
+    public String toFileName() {
+        StringBuilder sb = new StringBuilder(basePath);
+        sb.append(hoogte.name());
+        sb.append('_');
+        sb.append(vorm.name());
+        sb.append('_');
+        sb.append(hol.name());
+        sb.append('_');
+        sb.append(kleur.name());
+
+        sb.append(".png");
+
+        return sb.toString().toLowerCase();
+    }
+
+    /**
+     * Return an array of all unique pawn combinations.
+     * @return Pion[]
+     */
+    public static Pion[] all() {
+        Pion[] pionnen = new Pion[16];
+        int i = 0;
+
+        for(Vorm v : Vorm.values()) {
+            for (Kleur k : Kleur.values()) {
+                for (Hoogte h : Hoogte.values()) {
+                    for (Hol ho : Hol.values()) {
+                        pionnen[i] = new Pion(v, k, h, ho);
+                        i++;
+                    }
+                }
+            }
+        }
+
+        return pionnen;
+    }
+
+    /**
+     * Basispad naar de map met pion-afbeeldingen
+     */
+    private static final String basePath = "src/main/resources/pionnen/";
 
     public enum Vorm {
-        HOOG, LAAG
+        ROND, VIERKANT
     }
 
     public enum Kleur {

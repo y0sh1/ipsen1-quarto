@@ -3,6 +3,7 @@ package ipsen1.quarto;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.form.Hoofdmenu;
 import ipsen1.quarto.util.FormStack;
+import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,6 +34,7 @@ public class QuartoApplication extends JFrame {
     public QuartoApplication() {
         super("Quarto!");
         currentApplication = this;
+        setBackground(QuartoColor.DARK_BROWN);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -41,8 +43,13 @@ public class QuartoApplication extends JFrame {
      * This method exists so we can run the application 'headless' for unit testing.
      */
     public void start() {
-        presentForm(new Hoofdmenu());
-        setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                presentForm(new Hoofdmenu());
+                setVisible(true);
+            }
+        });
     }
 
     /**

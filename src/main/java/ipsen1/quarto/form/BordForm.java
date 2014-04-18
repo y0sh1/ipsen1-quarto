@@ -21,7 +21,7 @@ public class BordForm extends Form {
     private JPanel bord = new Bord(),
                    beschikbarePionnen = new BeschikbarePionnenForm(),
                    geselecteerdePionnen = new GeselecteerdePionForm(),
-                   buttonPanel = new QuartoButtonPanel();
+                   buttonPanel = new ButtonPanel();
 
     private Spel spel = new Spel();
 
@@ -78,14 +78,19 @@ public class BordForm extends Form {
         return spel;
     }
 
-    private class QuartoButtonPanel extends JPanel {
+    private class ButtonPanel extends JPanel {
         private JButton quartoButton = new JButton("Quarto!"),
-                menuButton = new JButton("Menu");
+                        menuButton = new JButton("Menu");
 
-        public QuartoButtonPanel() {
+        public ButtonPanel() {
             setPreferredSize(new Dimension(256, 64));
             setLayout(new FlowLayout());
+            setBackground(QuartoColor.DARK_BROWN);
 
+            addButtons();
+        }
+
+        private void addButtons() {
             quartoButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
