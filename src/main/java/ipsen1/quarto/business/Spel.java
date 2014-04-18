@@ -10,12 +10,17 @@ public class Spel {
     private Bord spelBord;
 
     private Speler[] spelers;
-    private int huidigeSpeler = 0;
+    private int aantalSpelers = 2,
+                huidigeSpeler = 0;
 
     private int quartoBeurtTeller = 0;
 
     public Spel() {
         spelers = new Speler[2];
+        spelers[0] = new Speler("Zwart");
+        spelers[1] = new Speler("Wit");
+        verkiesBeginnendeSpeler();
+
         spelBord = new Bord();
     }
 
@@ -28,7 +33,10 @@ public class Spel {
     }
 
     public void volgendeSpeler() {
-        // TODO: Implementeer mij
+        huidigeSpeler++;
+
+        if(huidigeSpeler > aantalSpelers)
+            huidigeSpeler = 0;
     }
 
     public boolean isQuarto() {
@@ -56,8 +64,16 @@ public class Spel {
         this.huidigePion = huidigePion;
     }
 
+    public Speler[] getSpelers() {
+        return spelers;
+    }
+
+    public Speler getHuidigeSpeler() {
+        return spelers[huidigeSpeler];
+    }
+
     public void verkiesBeginnendeSpeler() {
-        // TODO: Implementeer mij
+        huidigeSpeler = (int) Math.floor(Math.random() * aantalSpelers);
     }
 
     public void plaatsPion() {
