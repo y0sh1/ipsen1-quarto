@@ -47,27 +47,6 @@ public class Pion {
         return sb.toString().toLowerCase();
     }
 
-    /**
-     * Return an array of all unique pawn combinations.
-     * @return Pion[]
-     */
-    public static Pion[] all() {
-        Pion[] pionnen = new Pion[16];
-        int i = 0;
-
-        for(Vorm v : Vorm.values()) {
-            for (Kleur k : Kleur.values()) {
-                for (Hoogte h : Hoogte.values()) {
-                    for (Hol ho : Hol.values()) {
-                        pionnen[i] = new Pion(v, k, h, ho);
-                        i++;
-                    }
-                }
-            }
-        }
-
-        return pionnen;
-    }
 
     /**
      * Basispad naar de map met pion-afbeeldingen

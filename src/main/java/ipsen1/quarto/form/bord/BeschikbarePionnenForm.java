@@ -1,6 +1,7 @@
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
+import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.util.QuartoColor;
 
@@ -31,7 +32,7 @@ public class BeschikbarePionnenForm extends Form {
     }
 
     private void voegPionnenToe() {
-        for(Pion p : Pion.all()) {
+        for(Pion p : Pionnen.all()) {
             pionnenButtonsPanel.add(getPionButton(p));
         }
     }
