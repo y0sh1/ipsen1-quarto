@@ -1,14 +1,12 @@
 package ipsen1.quarto.form;
 
 import ipsen1.quarto.task.*;
+import ipsen1.quarto.util.FontOpenSans;
 import ipsen1.quarto.util.TaskListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class Hoofdmenu extends Form {
     private final String title = "Quarto!";
@@ -30,18 +28,9 @@ public class Hoofdmenu extends Form {
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
         titleLabel.setPreferredSize(new Dimension(width, height / 6));
 
+        Font titleFont = FontOpenSans.create();
 
-        // Font Ophalen
-        File fontfile = new File("resources/OpenSans-Regular.ttf");
-        Font font;
-        try {
-            font = Font.createFont(Font.TRUETYPE_FONT, fontfile);
-        } catch (FontFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        titleLabel.setFont(font);
+        titleLabel.setFont(titleFont);
 
         return titleLabel;
     }
