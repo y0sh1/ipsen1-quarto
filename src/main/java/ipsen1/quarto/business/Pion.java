@@ -1,5 +1,7 @@
 package ipsen1.quarto.business;
 
+import javax.swing.ImageIcon;
+
 public class Pion {
     private Vorm vorm;
     private Kleur kleur;
@@ -28,9 +30,37 @@ public class Pion {
         this.y = y;
     }
 
+    /**
+     * Get the filename for this pawn.
+     * @return String
+     */
+    public String toFileName() {
+        StringBuilder sb = new StringBuilder(BASE_PATH);
+        sb.append(hoogte.name());
+        sb.append('_');
+        sb.append(vorm.name());
+        sb.append('_');
+        sb.append(hol.name());
+        sb.append('_');
+        sb.append(kleur.name());
+
+        sb.append(IMAGE_EXTENSION);
+
+        return sb.toString().toLowerCase();
+    }
+
+    public ImageIcon getImageIcon() {
+        return new ImageIcon(this.toFileName());
+    }
+
+    /**
+     * Basispad naar de map met pion-afbeeldingen
+     */
+    private static final String BASE_PATH = "src/main/resources/pionnen/",
+                               IMAGE_EXTENSION = ".png";
 
     public enum Vorm {
-        HOOG, LAAG
+        ROND, VIERKANT
     }
 
     public enum Kleur {
