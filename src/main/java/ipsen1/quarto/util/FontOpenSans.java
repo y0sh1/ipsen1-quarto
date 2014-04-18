@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 public class FontOpenSans {
 
-    public static Font create() {
+    public static Font create(float size) {
         // Font klasse defineren
         Font fontOpenSansBase;
         Font fontOpenSansReal = null;
@@ -14,7 +14,7 @@ public class FontOpenSans {
         try {
             InputStream is = new FileInputStream("src/main/resources/OpenSans-Regular.ttf");
             fontOpenSansBase = Font.createFont(Font.TRUETYPE_FONT, is);
-            fontOpenSansReal = fontOpenSansBase.deriveFont(48f);
+            fontOpenSansReal = fontOpenSansBase.deriveFont(size);
 
 
         } catch (Exception e) {

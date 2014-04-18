@@ -28,7 +28,7 @@ public class Hoofdmenu extends Form {
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
         titleLabel.setPreferredSize(new Dimension(width, height / 6));
 
-        Font titleFont = FontOpenSans.create();
+        Font titleFont = FontOpenSans.create(48);
 
         titleLabel.setFont(titleFont);
 
@@ -61,7 +61,7 @@ public class Hoofdmenu extends Form {
             button.addActionListener(listener);
             button.setBackground(Color.BLACK);
             button.setForeground(Color.WHITE);
-            button.setFont(new Font("Calibri", Font.PLAIN, 24));
+            button.setFont(FontOpenSans.create(12));
             buttonsPanel.add(button);
         }
 
