@@ -46,7 +46,7 @@ public class Bord extends Form implements ActionListener {
     private void setupKnoppen() {
         final ImageIcon VAKJE_ICOON = new ImageIcon("src/main/resources/Vakje.png");
         JPanel vakkenHoofdPaneel = new JPanel();
-        vakkenHoofdPaneel.setBackground(Color.WHITE);
+        vakkenHoofdPaneel.setBackground(QuartoColor.DARK_BROWN);
         vakkenHoofdPaneel.setLayout(new GridLayout(4, 4, -100, 0));
 
         for (int i = 0; i < knoppen.length; i++) {
@@ -59,7 +59,8 @@ public class Bord extends Form implements ActionListener {
             knoppen[i].setFocusPainted(false);
 
 
-            // maakt een paneel aan met een standaard FlowLayout zodat de knoppen hun eigen grootte behouden aangezien dat niet mogelijk is met de GridLayout
+            /* maakt een paneel aan met een standaard FlowLayout zodat de knoppen hun eigen grootte
+               behouden aangezien dat niet mogelijk is met de GridLayout. */
             vakkenPanelen[i] = new JLayeredPane();
             vakkenPanelen[i].add(knoppen[i]);
             knoppen[i].setBounds(50, 0, 125, 85);
@@ -83,18 +84,13 @@ public class Bord extends Form implements ActionListener {
         final int PION_HOOGTE = 100;
 
         pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(PION_BREEDTE, PION_HOOGTE, Image.SCALE_SMOOTH));
-
         JLabel label = new JLabel(pionIcoon);
-
-        vakkenPanelen[vakNummer].setPreferredSize(new Dimension(125, 150));
         vakkenPanelen[vakNummer].add(label);
         vakkenPanelen[vakNummer].moveToFront(label);
 
         final int PION_Y_LOCATIE = -25;
-        final int PION_X_LOCATIE = 125 / 2 + 10;
-
+        final int PION_X_LOCATIE = 125 / 2 + 11;
         label.setBounds(PION_X_LOCATIE, PION_Y_LOCATIE, PION_BREEDTE, PION_HOOGTE);
-
     }
 
 //    Implementeer mij
@@ -109,6 +105,5 @@ public class Bord extends Form implements ActionListener {
                 voegIcoonToeAanBord(huidigePion, i);
             }
         }
-
     }
 }
