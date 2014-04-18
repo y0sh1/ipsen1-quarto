@@ -1,6 +1,7 @@
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
+import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.util.QuartoColor;
@@ -12,8 +13,15 @@ import java.awt.event.ActionListener;
 
 public class BeschikbarePionnenForm extends Form {
     private JPanel pionnenButtonsPanel = new JPanel();
+    private Spel spel;
+    private JButton[] pionButton = new JButton[4*4];
+    private Pion[] pionnen = new Pion[4*4];
+    private int pionNummer = 0;
 
-    public BeschikbarePionnenForm() {
+    private BeschikbarePionnenForm() {}
+
+    public BeschikbarePionnenForm(Spel spel) {
+        this.spel = spel;
         setPreferredSize(new Dimension(256, 320));
         pionnenButtonsPanel.setPreferredSize(new Dimension(256, 256));
         setUpUI();
@@ -32,8 +40,10 @@ public class BeschikbarePionnenForm extends Form {
     }
 
     private void voegPionnenToe() {
-        for(Pion p : Pionnen.all()) {
-            pionnenButtonsPanel.add(getPionButton(p));
+        pionnen = Pionnen.all();
+        for(int i = 0; i < 4*4; i++) {
+            pionnenButtonsPanel.add(getPionButton(pionnen[i]));
+            pionNummer++;
         }
     }
 
@@ -42,15 +52,14 @@ public class BeschikbarePionnenForm extends Form {
 
         final int SCALE_FACTOR = 8;
         pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_SMOOTH));
-        JButton pionButton = new JButton(pionIcoon);
+        pionButton[pionNummer] = new JButton(pionIcoon);
 
-        pionButton.setContentAreaFilled(false);
-        pionButton.setBorderPainted(false);
-        pionButton.setFocusPainted(false);
-        pionButton.addActionListener(new PionButtonActionListener());
+        pionButton[pionNummer].setContentAreaFilled(false);
+        pionButton[pionNummer].setBorderPainted(false);
+        pionButton[pionNummer].setFocusPainted(false);
+        pionButton[pionNummer].addActionListener(new PionButtonActionListener());
 
-
-        return pionButton;
+        return pionButton[pionNummer];
     }
 
     public void kiesPion() {
@@ -60,9 +69,18 @@ public class BeschikbarePionnenForm extends Form {
     private class PionButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Click");
             JButton source = (JButton)e.getSource();
             source.setEnabled(false);
+
+//            Controleert op welke pion geklikt is en geeft die pion door aan het spel
+            for(int i = 0; i < pionButton.length; i++) {
+                if(source == pionButton[i]) {
+                    System.out.println(i);
+                    spel.setHuidigePion(pionnen[i]);
+                }
+            }
+
+
         }
     }
 }

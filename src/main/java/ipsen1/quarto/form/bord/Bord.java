@@ -14,6 +14,8 @@ public class Bord extends Form implements ActionListener {
     private JButton[] knoppen = new JButton[4 * 4];
     private Spel spel;
 
+    private Bord() {}
+
     public Bord(Spel spel) {
         this.spel = spel;
         setPreferredSize(new Dimension(size, size));
