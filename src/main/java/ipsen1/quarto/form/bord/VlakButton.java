@@ -17,9 +17,8 @@ public class VlakButton extends JButton {
 
     private void setStyle() {
         // Haalt de stijl van de JButton weg zodat alleen het rondje over blijft.
-//        setContentAreaFilled(false);
-//        setBorderPainted(false);
-//        setFocusPainted(false);
+        setBorderPainted(false);
+        setFocusPainted(false);
 
         setBounds(50, 0, 120, 79);
         setIcon(VAKJE_ICOON);
