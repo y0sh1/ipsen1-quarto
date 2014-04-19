@@ -16,11 +16,12 @@ public class Instructies extends Form {
 
         // Instellen Formaat en layout
         setPreferredSize(new Dimension(800, 600));
-        setLayout(new GridLayout(3,1));
-        // Defineren Labels
+        setLayout(new BorderLayout(10,10));
+        // Defineren Titel koptekst
         JLabel titelLabel = new JLabel("Instructies", SwingConstants.CENTER);
         titelLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
 
+        // Defineren Instructie tekst
         JLabel instructieTekst = new JLabel();
         instructieTekst.setBorder(new EmptyBorder(0,55,55,0));
         StringBuilder sb = new StringBuilder();
@@ -56,10 +57,11 @@ public class Instructies extends Form {
                 QuartoApplication.currentApplication().popForm();
             }
         });
+        okKnop.setSize(20,20);
 
         // Toevoegen Labels
-        add(titelLabel);
-        add(instructieTekst);
-        add(okKnop);
+        add(titelLabel, BorderLayout.NORTH);
+        add(instructieTekst, BorderLayout.CENTER);
+        add(okKnop, BorderLayout.SOUTH);
     }
 }
