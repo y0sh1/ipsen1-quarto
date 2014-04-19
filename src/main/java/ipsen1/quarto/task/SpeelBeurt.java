@@ -11,9 +11,11 @@ import ipsen1.quarto.form.listener.PlaatsPionActionListener;
 public class SpeelBeurt extends Task {
     @Override
     public boolean validate() {
-        if(!(QuartoApplication.currentApplication().currentForm() instanceof BordForm)) {
+        if(!(QuartoApplication.currentApplication().currentForm() instanceof BordForm))
             return false;
-        }
+
+        if(spel != null && !spel.isQuarto())
+            return false;
 
         return true;
     }
