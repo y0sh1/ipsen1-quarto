@@ -40,6 +40,9 @@ public class Bord extends Form {
         statusPaneel.setBackground(QuartoColor.DARK_BROWN);
         statusLabel.setFont(new Font("Arial", Font.PLAIN, 30));
         statusLabel.setForeground(Color.WHITE);
+        statusLabel.setVerticalAlignment(SwingConstants.TOP);
+        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         statusPaneel.add(statusLabel);
 
         this.add(statusPaneel, BorderLayout.NORTH);

@@ -55,7 +55,9 @@ public class SpeelBeurt extends Task {
         spel.setGeselecteerdePion(pion);
         bordForm.getGeselecteerdePion().setGeselecteerdePion(pion);
         bordForm.getGeselecteerdePion().redraw();
+
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
+        bordForm.getBord().setStatusText(spel.getStatusText());
     }
 
     public void plaatsPion(int x, int y) {
@@ -73,5 +75,6 @@ public class SpeelBeurt extends Task {
         bordForm.getGeselecteerdePion().redraw();
 
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
+        bordForm.getBord().setStatusText(spel.getStatusText());
     }
 }

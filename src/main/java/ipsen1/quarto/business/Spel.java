@@ -16,8 +16,8 @@ public class Spel {
 
     public Spel() {
         spelers = new Speler[2];
-        spelers[0] = new Speler("Zwart");
-        spelers[1] = new Speler("Wit");
+        spelers[0] = new Speler("Tim");
+        spelers[1] = new Speler("Joshua");
         verkiesBeginnendeSpeler();
 
         spelBord = new Bord();
@@ -27,6 +27,7 @@ public class Spel {
         // TODO: Implementeer mij
     }
 
+    @Deprecated
     public void spelAfsluiten() {
         // TODO: Implementeer mij
     }
@@ -75,7 +76,7 @@ public class Spel {
         this.geselecteerdePion = null;
     }
 
-    public boolean geselecteerdePionIsEmpty() {
+    private boolean geselecteerdePionIsLeeg() {
         return geselecteerdePion == null;
     }
 
@@ -110,10 +111,18 @@ public class Spel {
 
     public String getStatusText() {
         StringBuilder sb = new StringBuilder();
+        sb.append("<html>");
 
         sb.append(getHuidigeSpeler().getNaam());
         sb.append(" is aan de beurt.");
-        sb.append("Kies een stuk uit voor de tegenstander.");
+        sb.append("<br>");
+
+        if(geselecteerdePionIsLeeg())
+            sb.append("Kies een stuk uit voor de tegenstander.");
+        else
+            sb.append("Plaats het stuk.");
+
+        sb.append("</html>");
 
         return sb.toString();
     }
