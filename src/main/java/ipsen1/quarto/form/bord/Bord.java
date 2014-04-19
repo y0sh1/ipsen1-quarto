@@ -74,10 +74,10 @@ public class Bord extends Form {
 
     public void voegPionToe(Pion pion) {
         PionLabel label = new PionLabel(pion);
-        JLayeredPane ding = vakkenPanelen[pion.getY()][pion.getX()];
+        JLayeredPane jLayeredPane = vakkenPanelen[pion.getY()][pion.getX()];
 
-        ding.add(label);
-        ding.moveToFront(label);
+        jLayeredPane.add(label);
+        jLayeredPane.moveToFront(label);
     }
 
     public void voegPionnenToe(Pion[] pionnen) {
