@@ -56,8 +56,9 @@ public class SpeelBeurt extends Task {
     public void kiesPion(Pion pion) {
         spel.setGeselecteerdePion(pion);
         bordForm.getGeselecteerdePion().setGeselecteerdePion(pion);
-        bordForm.getGeselecteerdePion().redraw();
+
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
+        bordForm.getBord().setStatusText(spel.getStatusText());
     }
 
     public void plaatsPion(int x, int y) {
@@ -72,9 +73,8 @@ public class SpeelBeurt extends Task {
         bordForm.plaatsPion(huidigePion);
 
         spel.verwijderGeselecteerdePion();
-        bordForm.getGeselecteerdePion().redraw();
+        bordForm.getGeselecteerdePion().verwijderGeselecteerdePion();
 
-        
-        spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
+        bordForm.getBord().setStatusText(spel.getStatusText());
     }
 }
