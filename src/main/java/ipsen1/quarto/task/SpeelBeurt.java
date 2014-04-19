@@ -23,6 +23,7 @@ public class SpeelBeurt extends Task {
 
     private Spel spel;
     private BordForm bordForm;
+    private ControleerQuarto controleerQuarto;
 
     @Override
     public void execute() {
@@ -40,6 +41,7 @@ public class SpeelBeurt extends Task {
         bordForm.getBord().setStatusText(spel.getStatusText());
         bordForm.getBord().redraw();
 
+
         bordForm.getButtonPanel().setQuartoListener(new GeefQuartoAanActionListener(spel));
         bordForm.getButtonPanel().redraw();
     }
@@ -47,7 +49,7 @@ public class SpeelBeurt extends Task {
     public void execute(Spel spel, BordForm bord) {
         this.spel = spel;
         this.bordForm = bord;
-
+        this.controleerQuarto = new ControleerQuarto(spel);
         execute();
     }
 
@@ -72,6 +74,7 @@ public class SpeelBeurt extends Task {
         spel.verwijderGeselecteerdePion();
         bordForm.getGeselecteerdePion().redraw();
 
+        
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
     }
 }

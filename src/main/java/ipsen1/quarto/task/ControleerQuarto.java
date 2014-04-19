@@ -1,12 +1,15 @@
 package ipsen1.quarto.task;
 
 import ipsen1.quarto.business.Spel;
+import ipsen1.quarto.business.Bord;
 
 public class ControleerQuarto extends Task {
     private Spel spel;
+    private Bord bord;
 
     public ControleerQuarto(Spel spel) {
         this.spel = spel;
+        bord = spel.getBord();
     }
 
     @Override
@@ -17,7 +20,8 @@ public class ControleerQuarto extends Task {
     @Override
     public void execute() {
         // TODO: Implementeer mij
-        System.out.println("OMG QUARTO!!1!");
+        System.out.println("Controleer Quarto execute() start");
+
     }
 
     public boolean isGeldigeQuarto() {
