@@ -48,7 +48,6 @@ public class GeselecteerdePionForm extends Form {
 
     public void setGeselecteerdePion(Pion geselecteerdePion) {
         this.geselecteerdePion = geselecteerdePion;
-        redraw();
     }
 
     public void verwijderGeselecteerdePion() {

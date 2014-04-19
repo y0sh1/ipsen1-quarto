@@ -84,7 +84,7 @@ public class Spel {
     }
 
     public void plaatsPion(Pion pion) {
-        // TODO: Implementeer mij
+        spelBord.setPion(pion);
     }
 
     public void slaSpelOp() {
