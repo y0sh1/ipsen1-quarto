@@ -69,16 +69,19 @@ public class BeschikbarePionnenForm extends Form {
     private class PionButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JButton source = (JButton)e.getSource();
-            source.setEnabled(false);
+            if(spel.huidigePionIsEmpty()) {
+                JButton source = (JButton)e.getSource();
+                source.setEnabled(false);
 
 //            Controleert op welke pion geklikt is en geeft die pion door aan het spel
-            for(int i = 0; i < pionButton.length; i++) {
-                if(source == pionButton[i]) {
-                    System.out.println(i);
-                    spel.setHuidigePion(pionnen[i]);
+                for(int i = 0; i < pionButton.length; i++) {
+                    if(source == pionButton[i]) {
+                        System.out.println(i);
+                        spel.setHuidigePion(pionnen[i]);
+                    }
                 }
             }
+
 
 
         }

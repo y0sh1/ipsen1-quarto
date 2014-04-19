@@ -70,6 +70,13 @@ public class Spel {
         bordForm.verwijderGeselecteerdePion();
     }
 
+    public boolean huidigePionIsEmpty() {
+        if (huidigePion == null)
+            return true;
+        else
+            return false;
+    }
+
     public void verkiesBeginnendeSpeler() {
         // TODO: Implementeer mij
     }
