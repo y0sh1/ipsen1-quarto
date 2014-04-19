@@ -1,8 +1,6 @@
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
-import ipsen1.quarto.business.Spel;
-import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.form.listener.KiesPionActionListener;
 import ipsen1.quarto.form.pionnen.PionButton;
@@ -10,8 +8,6 @@ import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class BeschikbarePionnenForm extends Form {
     private Pion[] beschikbarePionnen;

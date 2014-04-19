@@ -1,3 +1,5 @@
+//Auteur klasse: Tim Vane
+
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
@@ -9,8 +11,6 @@ import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GeselecteerdePionForm extends Form {
     private Pion geselecteerdePion;
@@ -46,5 +46,10 @@ public class GeselecteerdePionForm extends Form {
     public void setGeselecteerdePion(Pion geselecteerdePion) {
         this.geselecteerdePion = geselecteerdePion;
         redraw();
+    }
+
+    public void verwijderGeselecteerdePion() {
+        remove(pionLabel);
+        repaint();
     }
 }

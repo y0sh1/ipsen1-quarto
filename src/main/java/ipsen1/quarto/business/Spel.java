@@ -59,10 +59,12 @@ public class Spel {
     }
 
     public Pion getHuidigePion() {
+        //Auteur method: Tim Vane
         return huidigePion;
     }
 
     public void setHuidigePion(Pion huidigePion) {
+        //Auteur method: Tim Vane
         this.huidigePion = huidigePion;
     }
 
@@ -72,6 +74,19 @@ public class Spel {
 
     public Speler getHuidigeSpeler() {
         return spelers[huidigeSpeler];
+    }
+
+    public void verwijderHuidigePion() {
+        //Auteur method: Tim Vane
+        this.huidigePion = null;
+    }
+
+    public boolean huidigePionIsEmpty() {
+        //Auteur method: Tim Vane
+        if (huidigePion == null)
+            return true;
+        else
+            return false;
     }
 
     public void verkiesBeginnendeSpeler() {

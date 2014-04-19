@@ -35,9 +35,6 @@ public class SpeelBeurt extends Task {
         // De KiesPionListener koppelt het plaatsen van een pion terug naar de plaatsPion method van deze task.
         bord.getBord().setPlaatsPionListener(new PlaatsPionActionListener(this));
         bord.getBord().setStatusText(spel.getStatusText());
-
-//        spel.setHuidigePion(gekozenPion);
-//        spel.volgendeSpeler();
     }
 
     public void execute(Spel spel, BordForm bord) {
