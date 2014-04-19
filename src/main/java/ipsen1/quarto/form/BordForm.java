@@ -15,22 +15,17 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class BordForm extends Form {
+    private Spel spel = new Spel(this);
     private final int width = 1024,
                       height = 768;
 
-    private JPanel bord = new Bord(),
-                   beschikbarePionnen = new BeschikbarePionnenForm(),
-                   geselecteerdePionnen = new GeselecteerdePionForm(),
+    private JPanel bord = new Bord(spel),
+                   beschikbarePionnen = new BeschikbarePionnenForm(spel),
+//                   geselecteerdePion = new GeselecteerdePionForm(spel),
                    buttonPanel = new ButtonPanel();
-
-    private Spel spel = new Spel();
+    private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm(spel);
 
     public BordForm() {
-        setupUI();
-    }
-
-    public BordForm(Spel startSpel) {
-        spel = startSpel;
         setupUI();
     }
 
@@ -49,7 +44,7 @@ public class BordForm extends Form {
         sidebar.setBackground(QuartoColor.DARK_BROWN);
         sidebar.setPreferredSize(new Dimension(256, height));
         sidebar.add(beschikbarePionnen);
-        sidebar.add(geselecteerdePionnen);
+        sidebar.add(geselecteerdePion);
         sidebar.add(buttonPanel);
         add(sidebar, BorderLayout.EAST);
     }
@@ -78,6 +73,11 @@ public class BordForm extends Form {
     public Spel getSpel() {
         return spel;
     }
+
+    public void setGeselecteerdePion() {
+        geselecteerdePion.setGeselecteerdePion();
+    }
+
 
     private class ButtonPanel extends JPanel {
         private JButton quartoButton = new JButton("Quarto!"),

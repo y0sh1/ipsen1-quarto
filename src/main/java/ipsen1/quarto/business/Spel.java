@@ -1,11 +1,15 @@
 package ipsen1.quarto.business;
 
+import ipsen1.quarto.form.BordForm;
+import ipsen1.quarto.form.bord.GeselecteerdePionForm;
+
 public class Spel {
     /**
      * Is er een Quarto?
      */
     private boolean quarto = false;
 
+    private BordForm bordForm;
     private Pion huidigePion;
     private Bord spelBord;
 
@@ -15,7 +19,11 @@ public class Spel {
 
     private int quartoBeurtTeller = 0;
 
-    public Spel() {
+    private Spel() {}
+
+    public Spel(BordForm bordForm) {
+        this.bordForm = bordForm;
+//        this.bordForm = bordForm;
         spelers = new Speler[2];
         spelers[0] = new Speler("Zwart");
         spelers[1] = new Speler("Wit");
@@ -62,6 +70,8 @@ public class Spel {
 
     public void setHuidigePion(Pion huidigePion) {
         this.huidigePion = huidigePion;
+        bordForm.setGeselecteerdePion();
+
     }
 
     public Speler[] getSpelers() {
