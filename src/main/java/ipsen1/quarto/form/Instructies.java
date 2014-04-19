@@ -1,9 +1,14 @@
 package ipsen1.quarto.form;
 
+import ipsen1.quarto.QuartoApplication;
+import ipsen1.quarto.task.LeesInstructies;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Instructies extends Form {
     public Instructies(){
@@ -11,7 +16,7 @@ public class Instructies extends Form {
 
         // Instellen Formaat en layout
         setPreferredSize(new Dimension(800, 600));
-        setLayout(new GridLayout(2,1));
+        setLayout(new GridLayout(3,1));
         // Defineren Labels
         JLabel titelLabel = new JLabel("Instructies", SwingConstants.CENTER);
         titelLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
@@ -40,8 +45,16 @@ public class Instructies extends Form {
         sb.append("</HTML>");
         instructieTekst.setText(sb.toString());
 
+        JButton okKnop = new JButton("OK, Terug naar menu");
+        okKnop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                QuartoApplication.currentApplication().popForm();
+            }
+        });
         // Toevoegen Labels
         add(titelLabel);
         add(instructieTekst);
+        add(okKnop);
     }
 }

@@ -22,8 +22,7 @@ public class LeesInstructies extends Task {
     public void execute() {
         QuartoApplication.currentApplication().presentForm(new Instructies());
     }
-
     public void hideInstructies() {
-        // TODO: Implementeer mij
+        QuartoApplication.currentApplication().popForm();
     }
 }
