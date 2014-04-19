@@ -57,11 +57,14 @@ public class QuartoApplication extends JFrame {
      * @param Form f
      */
     public void presentForm(Form f) {
-        if(formStack.notEmpty())
+        if(formStack.notEmpty()) {
+            formStack.last().setVisible(false);
             remove(formStack.last());
+        }
 
         formStack.add(f);
         add(f);
+        f.setVisible(true);
         resizeFrame();
     }
 
@@ -72,10 +75,14 @@ public class QuartoApplication extends JFrame {
      */
     public Form popForm() {
         Form f = formStack.pop();
-        if(f != null) remove(f);
+        if(f != null) {
+            f.setVisible(false);
+            remove(f);
+        }
 
         if(formStack.notEmpty()) {
             add(formStack.last());
+            formStack.last().setVisible(true);
             resizeFrame();
         }
         return f;
@@ -92,8 +99,6 @@ public class QuartoApplication extends JFrame {
     public void resizeFrame() {
         if(formStack.notEmpty()) {
             Dimension dim = formStack.last().getPreferredSize();
-            dim.height += 20;
-            dim.width += 20;
             setSize(dim);
         }
     }
