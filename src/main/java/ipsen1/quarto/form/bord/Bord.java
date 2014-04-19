@@ -96,7 +96,7 @@ public class Bord extends Form implements ActionListener {
 //    Implementeer mij
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(spel.getHuidigePion() != null) {
+        if(spel.getHuidigePion() != null) { //zorgt ervoor dat er niet op het bord geklikt kan worden als er nog geen huidigePion is
             JButton source = (JButton)e.getSource();
             source.removeActionListener(this); //knop is nu niet meer klikbaar
             Pion huidigePion = spel.getHuidigePion();
