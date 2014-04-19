@@ -63,7 +63,11 @@ public class Spel {
     public void setHuidigePion(Pion huidigePion) {
         this.huidigePion = huidigePion;
         bordForm.setGeselecteerdePion();
+    }
 
+    public void verwijderHuidigePion() {
+        this.huidigePion = null;
+        bordForm.verwijderGeselecteerdePion();
     }
 
     public void verkiesBeginnendeSpeler() {

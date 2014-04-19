@@ -57,4 +57,9 @@ public class GeselecteerdePionForm extends Form {
         }
         tekenPion();
     }
+
+    public void verwijderGeselecteerdePion() {
+        remove(pionLabel);
+        repaint();
+    }
 }
