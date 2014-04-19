@@ -6,7 +6,7 @@ public class Spel {
 
     private Bord spelBord;
 
-    private Pion huidigePion;
+    private Pion geselecteerdePion;
 
     private Speler[] spelers;
     private int aantalSpelers = 2,
@@ -56,11 +56,11 @@ public class Spel {
     }
 
     public Pion getGeselecteerdePion() {
-        return huidigePion;
+        return geselecteerdePion;
     }
 
-    public void setGeselecteerdePion(Pion huidigePion) {
-        this.huidigePion = huidigePion;
+    public void setGeselecteerdePion(Pion geselecteerdePion) {
+        this.geselecteerdePion = geselecteerdePion;
     }
 
     public Speler[] getSpelers() {
@@ -71,12 +71,12 @@ public class Spel {
         return spelers[huidigeSpeler];
     }
 
-    public void verwijderHuidigePion() {
-        this.huidigePion = null;
+    public void verwijderGeselecteerdePion() {
+        this.geselecteerdePion = null;
     }
 
-    public boolean huidigePionIsEmpty() {
-        return huidigePion == null;
+    public boolean geselecteerdePionIsEmpty() {
+        return geselecteerdePion == null;
     }
 
     public void verkiesBeginnendeSpeler() {

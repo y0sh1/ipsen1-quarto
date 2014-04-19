@@ -69,7 +69,7 @@ public class SpeelBeurt extends Task {
         spel.plaatsPion(huidigePion);
         bordForm.plaatsPion(huidigePion);
 
-        spel.verwijderHuidigePion();
+        spel.verwijderGeselecteerdePion();
         bordForm.getGeselecteerdePion().redraw();
 
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
