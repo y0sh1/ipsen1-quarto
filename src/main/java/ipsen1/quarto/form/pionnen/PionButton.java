@@ -10,7 +10,6 @@ public class PionButton extends JButton {
     private Pion pion;
 
     public PionButton(Pion pion) {
-        super();
         this.pion = pion;
         setAppearance();
 

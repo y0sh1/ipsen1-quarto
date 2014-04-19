@@ -2,7 +2,6 @@ package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
 
-import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.form.pionnen.PionLabel;
 import ipsen1.quarto.util.QuartoColor;
@@ -12,7 +11,7 @@ import java.awt.*;
 
 public class GeselecteerdePionForm extends Form {
     private Pion geselecteerdePion;
-    private JLabel pionLabel;
+    private PionLabel pionLabel;
     private JLabel geselecteerdePionLabel;
 
     public GeselecteerdePionForm() {
@@ -29,11 +28,14 @@ public class GeselecteerdePionForm extends Form {
     @Override
     public void redraw() {
         removeAll();
+        System.out.println("redrawing GeselecteerdePionForm");
 
         add(geselecteerdePionLabel, BorderLayout.NORTH);
 
         pionLabel = new PionLabel(geselecteerdePion);
         add(pionLabel, BorderLayout.CENTER);
+
+        pionLabel.fixImage();
     }
 
     public void pakGeselecteerdePion() {

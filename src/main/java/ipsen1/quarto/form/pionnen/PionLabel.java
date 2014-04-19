@@ -2,17 +2,18 @@ package ipsen1.quarto.form.pionnen;
 
 import ipsen1.quarto.business.Pion;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 
 public class PionLabel extends JLabel {
     private Pion pion;
 
     public PionLabel(Pion pion) {
-        super();
         this.pion = pion;
 
+        setHorizontalAlignment(SwingConstants.CENTER);
+
+        setForeground(Color.WHITE);
         if(pion == null)
             drawEmpty();
         else
@@ -20,17 +21,24 @@ public class PionLabel extends JLabel {
     }
 
     private void drawEmpty() {
+        // TODO: Zet een placeholder neer als er nog geen pion gekozen is
     }
 
     private void drawImage() {
+        setText(null);
         ImageIcon pionIcoon = pion.getImageIcon();
-//        final int PION_BREEDTE = 75;
-//        final int PION_HOOGTE = 100;
-//        pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(PION_BREEDTE, PION_HOOGTE, Image.SCALE_SMOOTH));
 
         final int SCALE_FACTOR = 2;
-        pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_DEFAULT));
+        pionIcoon = new ImageIcon(pionIcoon.getImage()
+                .getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_DEFAULT));
 
         setIcon(pionIcoon);
+    }
+
+    public void fixImage() {
+        // FIXME: Dit is een vreselijke hack om te zorgen
+        // dat het plaatje netjes zichtbaar wordt...
+        setVisible(false);
+        setVisible(true);
     }
 }
