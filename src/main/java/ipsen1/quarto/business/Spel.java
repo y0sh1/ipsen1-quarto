@@ -35,7 +35,7 @@ public class Spel {
     public void volgendeSpeler() {
         huidigeSpeler++;
 
-        if(huidigeSpeler > aantalSpelers)
+        if(huidigeSpeler > aantalSpelers - 1)
             huidigeSpeler = 0;
     }
 
