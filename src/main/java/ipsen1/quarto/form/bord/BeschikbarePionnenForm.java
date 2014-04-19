@@ -40,7 +40,6 @@ public class BeschikbarePionnenForm extends Form {
     }
 
     private void voegPionnenToe() {
-        //Auteur method: Tim Vane
         pionnen = Pionnen.all();
         for(int i = 0; i < 4*4; i++) {
             pionnenButtonsPanel.add(getPionButton(pionnen[i]));
@@ -49,7 +48,6 @@ public class BeschikbarePionnenForm extends Form {
     }
 
     private JButton getPionButton(Pion pion) {
-        //Auteur method: Tim Vane
         ImageIcon pionIcoon = pion.getImageIcon();
 
         final int SCALE_FACTOR = 8;
@@ -69,7 +67,6 @@ public class BeschikbarePionnenForm extends Form {
     }
 
     private class PionButtonActionListener implements ActionListener {
-        //Auteur method: Tim Vane
         @Override
         public void actionPerformed(ActionEvent e) {
             if(spel.huidigePionIsEmpty()) {
