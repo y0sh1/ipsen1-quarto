@@ -41,17 +41,13 @@ public class GeselecteerdePionForm extends Form {
         pionLabel.fixImage();
     }
 
-    public void pakGeselecteerdePion() {
-        // TODO: Implementeer mij
-        System.out.println("Pak geselecteerde pion");
-    }
-
     public void setGeselecteerdePion(Pion geselecteerdePion) {
         this.geselecteerdePion = geselecteerdePion;
+        redraw();
     }
 
     public void verwijderGeselecteerdePion() {
-        remove(pionLabel);
-        repaint();
+        geselecteerdePion = null;
+        redraw();
     }
 }
