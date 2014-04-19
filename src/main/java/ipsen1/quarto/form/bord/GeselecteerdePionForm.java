@@ -1,5 +1,3 @@
-//Auteur klasse: Tim Vane
-
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;

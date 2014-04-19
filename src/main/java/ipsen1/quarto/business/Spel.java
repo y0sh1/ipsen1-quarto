@@ -1,8 +1,5 @@
 package ipsen1.quarto.business;
 
-import ipsen1.quarto.form.BordForm;
-import ipsen1.quarto.form.bord.GeselecteerdePionForm;
-
 public class Spel {
     // Is er een Quarto?
     private boolean quarto = false;
@@ -59,12 +56,10 @@ public class Spel {
     }
 
     public Pion getHuidigePion() {
-        //Auteur method: Tim Vane
         return huidigePion;
     }
 
     public void setHuidigePion(Pion huidigePion) {
-        //Auteur method: Tim Vane
         this.huidigePion = huidigePion;
     }
 
@@ -77,12 +72,10 @@ public class Spel {
     }
 
     public void verwijderHuidigePion() {
-        //Auteur method: Tim Vane
         this.huidigePion = null;
     }
 
     public boolean huidigePionIsEmpty() {
-        //Auteur method: Tim Vane
         return huidigePion == null;
     }
 
