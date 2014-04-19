@@ -2,6 +2,7 @@ package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.task.LeesInstructies;
+import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -17,13 +18,18 @@ public class Instructies extends Form {
         // Instellen Formaat en layout
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout(10,10));
+        setBackground(QuartoColor.DARK_BROWN);
         // Defineren Titel koptekst
         JLabel titelLabel = new JLabel("Instructies", SwingConstants.CENTER);
         titelLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        titelLabel.setForeground(QuartoColor.WHITE);
 
         // Defineren Instructie tekst
         JLabel instructieTekst = new JLabel();
-        instructieTekst.setBorder(new EmptyBorder(0,55,55,0));
+        instructieTekst.setBorder(new EmptyBorder(0,55,0,55));
+        instructieTekst.setForeground(QuartoColor.WHITE);
+
+        // Vullen instructie tekst
         StringBuilder sb = new StringBuilder();
         sb.append("<HTML>");
         sb.append("Quarto is een bordspel dat bestaat uit 16 stukken met elk een unieke combinatie van 4 eigenschappen:<br>");
@@ -58,6 +64,7 @@ public class Instructies extends Form {
             }
         });
         okKnop.setSize(20,20);
+        okKnop.setBorder(new EmptyBorder(0,0,0,0));
 
         // Toevoegen Labels
         add(titelLabel, BorderLayout.NORTH);
