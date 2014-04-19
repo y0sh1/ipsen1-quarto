@@ -83,10 +83,7 @@ public class Spel {
 
     public boolean huidigePionIsEmpty() {
         //Auteur method: Tim Vane
-        if (huidigePion == null)
-            return true;
-        else
-            return false;
+        return huidigePion == null;
     }
 
     public void verkiesBeginnendeSpeler() {
