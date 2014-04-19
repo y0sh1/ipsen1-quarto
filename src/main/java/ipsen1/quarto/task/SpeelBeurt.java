@@ -49,7 +49,6 @@ public class SpeelBeurt extends Task {
     public void execute(Spel spel, BordForm bord) {
         this.spel = spel;
         this.bordForm = bord;
-        this.controleerQuarto = new ControleerQuarto(spel);
         execute();
     }
 
@@ -71,9 +70,11 @@ public class SpeelBeurt extends Task {
 
         spel.plaatsPion(huidigePion);
         bordForm.plaatsPion(huidigePion);
+        new ControleerQuarto(spel).run();
 
         spel.verwijderGeselecteerdePion();
         bordForm.getGeselecteerdePion().verwijderGeselecteerdePion();
+
 
         bordForm.getBord().setStatusText(spel.getStatusText());
     }
