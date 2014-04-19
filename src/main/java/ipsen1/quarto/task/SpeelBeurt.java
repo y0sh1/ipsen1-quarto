@@ -28,7 +28,7 @@ public class SpeelBeurt extends Task {
     @Override
     public void execute() {
         // Stap 1.1
-        Pion[] resterendePionnen = Pionnen.all();
+        Pionnen resterendePionnen = spel.getResterendePionnen();
 
         // De KiesPionListener koppelt het kiezen van een pion terug naar de kiesPion method van deze task.
         bordForm.getBeschikbarePionnenForm().setKiesPionListener(new KiesPionActionListener(this));
