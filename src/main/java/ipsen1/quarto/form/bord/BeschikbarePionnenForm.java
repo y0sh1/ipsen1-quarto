@@ -15,7 +15,7 @@ public class BeschikbarePionnenForm extends Form {
 
     public BeschikbarePionnenForm() {
         setPreferredSize(new Dimension(256, 320));
-        pionnenButtonsPanel.setPreferredSize(new Dimension(256, 256));
+        pionnenButtonsPanel.setPreferredSize(new Dimension(256, 290));
 
         setBackground(QuartoColor.DARK_BROWN);
         pionnenButtonsPanel.setLayout(new GridLayout(4, 4));
