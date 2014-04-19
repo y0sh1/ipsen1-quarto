@@ -6,13 +6,17 @@ import java.util.List;
 public class Bord {
     private Pion[][] matrix;
 
-    public final int BOARD_WIDTH = 4,
-                     BOARD_HEIGHT = 4;
+    public final int width = 4,
+                     height = 4;
 
     private List<Pion[][]> blackListedCombinaties = new ArrayList<>();
 
     public Bord() {
-        matrix = new Pion[BOARD_HEIGHT][BOARD_WIDTH];
+        matrix = new Pion[height][width];
+    }
+
+    public void setPion(Pion pion) {
+        matrix[pion.getY()][pion.getX()] = pion;
     }
 
     public void blackListHuidigeCombinatie() {
