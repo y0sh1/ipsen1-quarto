@@ -5,6 +5,7 @@ import ipsen1.quarto.business.Pion;
 import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.BordForm;
+import ipsen1.quarto.form.listener.GeefQuartoAanActionListener;
 import ipsen1.quarto.form.listener.KiesPionActionListener;
 import ipsen1.quarto.form.listener.PlaatsPionActionListener;
 
@@ -38,6 +39,9 @@ public class SpeelBeurt extends Task {
         bordForm.getBord().setPlaatsPionListener(new PlaatsPionActionListener(this));
         bordForm.getBord().setStatusText(spel.getStatusText());
         bordForm.getBord().redraw();
+
+        bordForm.getButtonPanel().setQuartoListener(new GeefQuartoAanActionListener(spel));
+        bordForm.getButtonPanel().redraw();
     }
 
     public void execute(Spel spel, BordForm bord) {
