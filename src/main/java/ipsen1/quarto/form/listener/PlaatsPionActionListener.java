@@ -1,5 +1,6 @@
 package ipsen1.quarto.form.listener;
 
+import ipsen1.quarto.form.bord.VlakButton;
 import ipsen1.quarto.form.pionnen.PionButton;
 import ipsen1.quarto.task.SpeelBeurt;
 
@@ -13,12 +14,12 @@ public class PlaatsPionActionListener extends SpeelBeurtActionListener implement
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() instanceof PionButton) {
-            PionButton button = (PionButton) e.getSource();
-            button.removeActionListener(this); // Knop is nu niet meer klikbaar
+        System.out.println("Klik");
+        if(e.getSource() instanceof VlakButton) {
+            VlakButton button = (VlakButton) e.getSource();
 
-            beurtTask.plaatsPion(button.getPion());
-            System.out.println("Pion " + button.getPion().toString() + " geplaatst");
+            beurtTask.plaatsPion(button.getX(), button.getY());
+            System.out.println("Pion plaatsen op x: " + button.getX() + " y: " + button.getY());
         }
     }
 }

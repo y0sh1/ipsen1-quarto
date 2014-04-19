@@ -2,12 +2,12 @@ package ipsen1.quarto.form.pionnen;
 
 import ipsen1.quarto.business.Pion;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.Image;
 
 public class PionButton extends JButton {
     private Pion pion;
+    private final int width = 160, height = 170;
 
     public PionButton(Pion pion) {
         this.pion = pion;
@@ -28,6 +28,9 @@ public class PionButton extends JButton {
         setContentAreaFilled(false);
         setBorderPainted(false);
         setFocusPainted(false);
+        setHorizontalAlignment(SwingConstants.CENTER);
+        setVerticalAlignment(SwingConstants.BOTTOM);
+        setBounds(192 / 2 , -32, width, height);
     }
 
     private void drawEmpty() {
@@ -47,7 +50,6 @@ public class PionButton extends JButton {
     }
 
     public Pion getPion() {
-
         return pion;
     }
 }

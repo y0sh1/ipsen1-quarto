@@ -55,11 +55,11 @@ public class Spel {
         return spelBord;
     }
 
-    public Pion getHuidigePion() {
+    public Pion getGeselecteerdePion() {
         return huidigePion;
     }
 
-    public void setHuidigePion(Pion huidigePion) {
+    public void setGeselecteerdePion(Pion huidigePion) {
         this.huidigePion = huidigePion;
     }
 

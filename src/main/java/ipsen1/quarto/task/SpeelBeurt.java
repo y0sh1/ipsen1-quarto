@@ -19,7 +19,7 @@ public class SpeelBeurt extends Task {
     }
 
     private Spel spel;
-    private BordForm bord;
+    private BordForm bordForm;
 
     @Override
     public void execute() {
@@ -27,40 +27,42 @@ public class SpeelBeurt extends Task {
         Pion[] resterendePionnen = Pionnen.all();
 
         // De KiesPionListener koppelt het kiezen van een pion terug naar de kiesPion method van deze task.
-        bord.getBeschikbarePionnenForm().setKiesPionListener(new KiesPionActionListener(this));
-        bord.getBeschikbarePionnenForm().setBeschikbarePionnen(resterendePionnen);
+        bordForm.getBeschikbarePionnenForm().setKiesPionListener(new KiesPionActionListener(this));
+        bordForm.getBeschikbarePionnenForm().setBeschikbarePionnen(resterendePionnen);
         // Stap 1.2
-        bord.getBeschikbarePionnenForm().redraw();
+        bordForm.getBeschikbarePionnenForm().redraw();
 
         // De KiesPionListener koppelt het plaatsen van een pion terug naar de plaatsPion method van deze task.
-        bord.getBord().setPlaatsPionListener(new PlaatsPionActionListener(this));
-        bord.getBord().setStatusText(spel.getStatusText());
+        bordForm.getBord().setPlaatsPionListener(new PlaatsPionActionListener(this));
+        bordForm.getBord().setStatusText(spel.getStatusText());
+        bordForm.getBord().redraw();
     }
 
     public void execute(Spel spel, BordForm bord) {
         this.spel = spel;
-        this.bord = bord;
+        this.bordForm = bord;
 
         execute();
     }
 
     public void kiesPion(Pion pion) {
-        spel.setHuidigePion(pion);
-        bord.getGeselecteerdePion().setGeselecteerdePion(pion);
+        spel.setGeselecteerdePion(pion);
+        bordForm.getGeselecteerdePion().setGeselecteerdePion(pion);
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
     }
 
-    public void plaatsPion(Pion pion) {
-        spel.plaatsPion(pion);
-        bord.plaatsPion(pion);
+    public void plaatsPion(int x, int y) {
+        Pion huidigePion = spel.getGeselecteerdePion();
+        if(huidigePion == null)
+            return;
+
+        huidigePion.setX(x);
+        huidigePion.setY(y);
+
+        spel.plaatsPion(huidigePion);
+        bordForm.plaatsPion(huidigePion);
+        spel.setGeselecteerdePion(null);
+        bordForm.getGeselecteerdePion().redraw();
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
-    }
-
-    // Alternatieve versie
-    public void plaatsPion(Pion pion, int x, int y) {
-        pion.setX(x);
-        pion.setY(y);
-
-        plaatsPion(pion);
     }
 }
