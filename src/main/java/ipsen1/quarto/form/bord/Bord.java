@@ -110,6 +110,7 @@ public class Bord extends Form implements ActionListener {
 
         for(int i = 0; i < knoppen.length; i++) {
             if(source == knoppen[i]) {
+                // TODO: NullPointerException als er nog geen pion gekozen is, check toevoegen
                 voegIcoonToeAanBord(huidigePion, i);
             }
         }
