@@ -4,6 +4,7 @@ import ipsen1.quarto.business.Pion;
 
 import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.form.Form;
+import ipsen1.quarto.form.pionnen.PionLabel;
 import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
@@ -13,32 +14,28 @@ import java.awt.event.ActionListener;
 
 public class GeselecteerdePionForm extends Form {
     private Pion geselecteerdePion;
-    private ImageIcon pionIcoon;
-    private Spel spel;
     private JLabel pionLabel;
+    private JLabel geselecteerdePionLabel;
 
-    public GeselecteerdePionForm(Spel spel) {
+    public GeselecteerdePionForm() {
         this.setLayout(new BorderLayout());
-        this.spel = spel;
         setPreferredSize(new Dimension(256, 320));
         setBackground(QuartoColor.DARK_BROWN);
 
-        JLabel geselecteerdePionLabel = new JLabel("Gegeven spelstuk", SwingConstants.CENTER);
+        geselecteerdePionLabel = new JLabel("Gegeven spelstuk", SwingConstants.CENTER);
         geselecteerdePionLabel.setForeground(Color.WHITE);
-        add(geselecteerdePionLabel, BorderLayout.NORTH);
+
+        redraw();
     }
 
-    private void tekenPion() {
-        pionIcoon = geselecteerdePion.getImageIcon();
-        final int SCALE_FACTOR = 2;
-        pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(320 / SCALE_FACTOR, 540 / SCALE_FACTOR, Image.SCALE_DEFAULT));
+    @Override
+    public void redraw() {
+        removeAll();
 
-        pionLabel = new JLabel(pionIcoon);
+        add(geselecteerdePionLabel, BorderLayout.NORTH);
+
+        pionLabel = new PionLabel(geselecteerdePion);
         add(pionLabel, BorderLayout.CENTER);
-
-        // Om een of andere reden wilt de pion niet getekent worden zonder deze statements. Ook repaint() hielp niet
-        pionLabel.setVisible(false);
-        pionLabel.setVisible(true);
     }
 
     public void pakGeselecteerdePion() {
@@ -46,13 +43,8 @@ public class GeselecteerdePionForm extends Form {
         System.out.println("Pak geselecteerde pion");
     }
 
-    public void setGeselecteerdePion() {
-        System.out.println("setGeselecteerdePion");
-        this.geselecteerdePion = spel.getHuidigePion();
-
-        if(pionLabel != null) {
-            remove(pionLabel);
-        }
-        tekenPion();
+    public void setGeselecteerdePion(Pion geselecteerdePion) {
+        this.geselecteerdePion = geselecteerdePion;
+        redraw();
     }
 }

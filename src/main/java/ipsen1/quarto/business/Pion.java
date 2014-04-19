@@ -76,6 +76,21 @@ public class Pion {
     }
 
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Pion:");
+        sb.append(' ');
+        sb.append(hoogte.name());
+        sb.append(' ');
+        sb.append(vorm.name());
+        sb.append(' ');
+        sb.append(hol.name());
+        sb.append(' ');
+        sb.append(kleur.name());
+
+        return sb.toString();
+    }
+
     public int getX() {
         return x;
     }

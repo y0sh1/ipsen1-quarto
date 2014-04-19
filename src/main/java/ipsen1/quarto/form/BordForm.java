@@ -3,7 +3,6 @@ package ipsen1.quarto.form;
 import ipsen1.quarto.QuartoApplication;
 
 import ipsen1.quarto.business.Pion;
-import ipsen1.quarto.business.Spel;
 
 import ipsen1.quarto.form.bord.BeschikbarePionnenForm;
 import ipsen1.quarto.form.bord.Bord;
@@ -15,14 +14,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class BordForm extends Form {
-    private Spel spel = new Spel(this);
     private final int width = 1024,
                       height = 768;
 
-    private Form bord = new Bord(spel),
-                 beschikbarePionnen = new BeschikbarePionnenForm(spel),
+    private Form beschikbarePionnen = new BeschikbarePionnenForm(),
                  buttonPanel = new ButtonPanel();
-    private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm(spel);
+    private Bord bord = new Bord();
+    private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm();
 
     public BordForm() {
         setupUI();
@@ -56,8 +54,15 @@ public class BordForm extends Form {
         // TODO: Implementeer mij
     }
 
+    public void plaatsPion(Pion pion) {
+        bord.voegPionToe(pion);
+    }
+
     public void plaatsPion(Pion pion, int x, int y) {
-        // TODO: Implementeer mij
+        pion.setX(x);
+        pion.setY(y);
+
+        plaatsPion(pion);
     }
 
     public void hideForm() { // De naam `hide` bestaat al in JComponent, maar is deprecated
@@ -66,17 +71,19 @@ public class BordForm extends Form {
 
     private void roepQuarto() {
         System.out.println("Iemand roept Quarto!");
-        spel.quartoAangeven();
     }
 
-    public Spel getSpel() {
-        return spel;
+    public Bord getBord() {
+        return (Bord) bord;
     }
 
-    public void setGeselecteerdePion() {
-        geselecteerdePion.setGeselecteerdePion();
+    public GeselecteerdePionForm getGeselecteerdePion() {
+        return geselecteerdePion;
     }
 
+    public BeschikbarePionnenForm getBeschikbarePionnenForm() {
+        return (BeschikbarePionnenForm) beschikbarePionnen;
+    }
 
     private class ButtonPanel extends Form {
         private JButton quartoButton = new JButton("Quarto!"),

@@ -3,46 +3,43 @@
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
-import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.form.Form;
+import ipsen1.quarto.form.listener.PlaatsPionActionListener;
+import ipsen1.quarto.form.pionnen.PionLabel;
 import ipsen1.quarto.util.QuartoColor;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Bord extends Form implements ActionListener {
+public class Bord extends Form {
     private final int size = 768;
+    private final int width = 4, height = 4;
 
-    private JLabel statusLabel = new JLabel();
+    // TODO: Uit bord halen en in een eigen BordForm subview stoppen
+    private JLabel statusLabel = new JLabel("Tekst");
 
-    private JButton[] knoppen = new JButton[4 * 4];
+    private JButton[] knoppen = new JButton[width * height];
+    private JLayeredPane vakkenPanelen[] = new JLayeredPane[width * height];
+    private Pion[] geplaatstePionnen = new Pion[width * height];
 
-    private Spel spel;
-
-    private JLayeredPane vakkenPanelen[] = new JLayeredPane[4*4];
-
-    public Bord(Spel spel) {
-        this.spel = spel;
+    public Bord() {
         setPreferredSize(new Dimension(size, size));
         setLayout(new BorderLayout(100, 100));
         setBackground(QuartoColor.DARK_BROWN);
         setupStatusPaneel();
-        setupKnoppen();
-        setStatus();
+        tekenKnoppen();
     }
 
     private void setupStatusPaneel() {
         JPanel statusPaneel = new JPanel();
         statusPaneel.setBackground(QuartoColor.DARK_BROWN);
-        statusLabel.setFont(new Font("Arial", 1, 30));
+        statusLabel.setFont(new Font("Arial", Font.PLAIN, 30));
         statusLabel.setForeground(Color.WHITE);
         statusPaneel.add(statusLabel);
 
         this.add(statusPaneel, BorderLayout.NORTH);
     }
 
-    private void setupKnoppen() {
+    private void tekenKnoppen() {
         final ImageIcon VAKJE_ICOON = new ImageIcon("src/main/resources/Vakje.png");
         JPanel vakkenHoofdPaneel = new JPanel();
         vakkenHoofdPaneel.setBackground(QuartoColor.DARK_BROWN);
@@ -50,7 +47,8 @@ public class Bord extends Form implements ActionListener {
 
         for (int i = 0; i < knoppen.length; i++) {
             knoppen[i] = new JButton(VAKJE_ICOON);
-            knoppen[i].addActionListener(this);
+            if(plaatsPionListener != null)
+                knoppen[i].addActionListener(plaatsPionListener);
 
             // Haalt de stijl van de JButton weg zodat alleen het rondje over blijft.
             knoppen[i].setContentAreaFilled(false);
@@ -77,42 +75,28 @@ public class Bord extends Form implements ActionListener {
         g.drawOval(getWidth() / 2 - 300, 125, 600, 600);
     }
 
-    @Override
-    public void redraw() {
-        setStatus();
-        repaint();
+    public void setStatusText(String text) {
+        statusLabel.setText(text);
     }
 
-    private void setStatus() {
-        statusLabel.setText(spel.getHuidigeSpeler().getNaam() + " is aan de beurt");
-    }
+    public void voegPionToe(Pion pion) {
+        int vakNummer = pion.getX() * pion.getY();
 
-    public void voegIcoonToeAanBord(Pion pion, int vakNummer) {
-        ImageIcon pionIcoon = pion.getImageIcon();
-        final int PION_BREEDTE = 75;
-        final int PION_HOOGTE = 100;
-
-        pionIcoon = new ImageIcon(pionIcoon.getImage().getScaledInstance(PION_BREEDTE, PION_HOOGTE, Image.SCALE_SMOOTH));
-        JLabel label = new JLabel(pionIcoon);
+        PionLabel label = new PionLabel(pion);
         vakkenPanelen[vakNummer].add(label);
         vakkenPanelen[vakNummer].moveToFront(label);
+
+        final int PION_BREEDTE = 75;
+        final int PION_HOOGTE = 100;
 
         final int PION_Y_LOCATIE = -25;
         final int PION_X_LOCATIE = 125 / 2 + 11;
         label.setBounds(PION_X_LOCATIE, PION_Y_LOCATIE, PION_BREEDTE, PION_HOOGTE);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton source = (JButton)e.getSource();
-        source.removeActionListener(this); //knop is nu niet meer klikbaar
-        Pion huidigePion = spel.getHuidigePion();
+    private PlaatsPionActionListener plaatsPionListener;
 
-        for(int i = 0; i < knoppen.length; i++) {
-            if(source == knoppen[i]) {
-                // TODO: NullPointerException als er nog geen pion gekozen is, check toevoegen
-                voegIcoonToeAanBord(huidigePion, i);
-            }
-        }
+    public void setPlaatsPionListener(PlaatsPionActionListener plaatsPionListener) {
+        this.plaatsPionListener = plaatsPionListener;
     }
 }

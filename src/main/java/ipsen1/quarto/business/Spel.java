@@ -4,14 +4,12 @@ import ipsen1.quarto.form.BordForm;
 import ipsen1.quarto.form.bord.GeselecteerdePionForm;
 
 public class Spel {
-    /**
-     * Is er een Quarto?
-     */
+    // Is er een Quarto?
     private boolean quarto = false;
 
-    private BordForm bordForm;
-    private Pion huidigePion;
     private Bord spelBord;
+
+    private Pion huidigePion;
 
     private Speler[] spelers;
     private int aantalSpelers = 2,
@@ -19,8 +17,7 @@ public class Spel {
 
     private int quartoBeurtTeller = 0;
 
-    public Spel(BordForm bordForm) {
-        this.bordForm = bordForm;
+    public Spel() {
         spelers = new Speler[2];
         spelers[0] = new Speler("Zwart");
         spelers[1] = new Speler("Wit");
@@ -67,8 +64,6 @@ public class Spel {
 
     public void setHuidigePion(Pion huidigePion) {
         this.huidigePion = huidigePion;
-        bordForm.setGeselecteerdePion();
-
     }
 
     public Speler[] getSpelers() {
@@ -83,7 +78,7 @@ public class Spel {
         huidigeSpeler = (int) Math.floor(Math.random() * aantalSpelers);
     }
 
-    public void plaatsPion() {
+    public void plaatsPion(Pion pion) {
         // TODO: Implementeer mij
     }
 
@@ -106,5 +101,15 @@ public class Spel {
 
     public void deactiveerQuartoBeurtTeller() {
         quartoBeurtTeller = 0;
+    }
+
+    public String getStatusText() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getHuidigeSpeler().getNaam());
+        sb.append(" is aan de beurt.");
+        sb.append("Kies een stuk uit voor de tegenstander.");
+
+        return sb.toString();
     }
 }
