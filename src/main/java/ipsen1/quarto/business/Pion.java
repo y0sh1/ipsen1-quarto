@@ -91,4 +91,20 @@ public class Pion {
     public void setY(int y) {
         this.y = y;
     }
+
+    public Vorm getVorm() {
+        return this.vorm;
+    }
+
+    public Kleur getKleur() {
+        return this.kleur;
+    }
+
+    public Hoogte getHoogte() {
+        return this.hoogte;
+    }
+
+    public Hol getHol() {
+        return this.hol;
+    }
 }
