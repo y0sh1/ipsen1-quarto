@@ -57,20 +57,24 @@ public class Spel {
     }
 
     public Pion getHuidigePion() {
+        //Auteur method: Tim Vane
         return huidigePion;
     }
 
     public void setHuidigePion(Pion huidigePion) {
+        //Auteur method: Tim Vane
         this.huidigePion = huidigePion;
         bordForm.setGeselecteerdePion();
     }
 
     public void verwijderHuidigePion() {
+        //Auteur method: Tim Vane
         this.huidigePion = null;
         bordForm.verwijderGeselecteerdePion();
     }
 
     public boolean huidigePionIsEmpty() {
+        //Auteur method: Tim Vane
         if (huidigePion == null)
             return true;
         else
