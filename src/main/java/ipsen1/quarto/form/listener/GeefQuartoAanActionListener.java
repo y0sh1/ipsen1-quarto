@@ -15,6 +15,6 @@ public class GeefQuartoAanActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new GeefQuartoAan(spel).execute();
+        new GeefQuartoAan(spel).run();
     }
 }
