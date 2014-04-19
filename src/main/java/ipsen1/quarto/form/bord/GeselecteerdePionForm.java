@@ -12,13 +12,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GeselecteerdePionForm extends Form {
-    //    private JButton pionLabel;
     private Pion geselecteerdePion;
     private ImageIcon pionIcoon;
     private Spel spel;
     private JLabel pionLabel;
-
-    private GeselecteerdePionForm() {}
 
     public GeselecteerdePionForm(Spel spel) {
         this.setLayout(new BorderLayout());

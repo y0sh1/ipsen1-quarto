@@ -19,11 +19,8 @@ public class Spel {
 
     private int quartoBeurtTeller = 0;
 
-    private Spel() {}
-
     public Spel(BordForm bordForm) {
         this.bordForm = bordForm;
-//        this.bordForm = bordForm;
         spelers = new Speler[2];
         spelers[0] = new Speler("Zwart");
         spelers[1] = new Speler("Wit");

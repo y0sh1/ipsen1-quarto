@@ -19,10 +19,9 @@ public class BordForm extends Form {
     private final int width = 1024,
                       height = 768;
 
-    private JPanel bord = new Bord(spel),
-                   beschikbarePionnen = new BeschikbarePionnenForm(spel),
-//                   geselecteerdePion = new GeselecteerdePionForm(spel),
-                   buttonPanel = new ButtonPanel();
+    private Form bord = new Bord(spel),
+                 beschikbarePionnen = new BeschikbarePionnenForm(spel),
+                 buttonPanel = new ButtonPanel();
     private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm(spel);
 
     public BordForm() {
@@ -79,7 +78,7 @@ public class BordForm extends Form {
     }
 
 
-    private class ButtonPanel extends JPanel {
+    private class ButtonPanel extends Form {
         private JButton quartoButton = new JButton("Quarto!"),
                         menuButton = new JButton("Menu");
 

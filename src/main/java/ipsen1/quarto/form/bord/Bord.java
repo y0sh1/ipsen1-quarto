@@ -22,8 +22,6 @@ public class Bord extends Form implements ActionListener {
 
     private JLayeredPane vakkenPanelen[] = new JLayeredPane[4*4];
 
-    private Bord() {}
-
     public Bord(Spel spel) {
         this.spel = spel;
         setPreferredSize(new Dimension(size, size));
