@@ -15,9 +15,10 @@ public class InGameMenu extends Form {
     public InGameMenu() {
         super();
 
-        setPreferredSize(new Dimension(800, 600));
-        setLayout(new GridLayout(7, 1));
+        //dit is een hack om ervoor te zorgen dat het spel werkt (bij 1024, 768 loopt het spel vast)
+        setPreferredSize(new Dimension(1024, 769));
 
+        setLayout(new GridLayout(7, 1));
         JLabel pauseLabel = new JLabel("Gepauzeerd", SwingConstants.CENTER);
         pauseLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
         add(pauseLabel);

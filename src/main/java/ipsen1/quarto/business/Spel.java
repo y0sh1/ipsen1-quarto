@@ -22,7 +22,6 @@ public class Spel {
 
     public Spel(BordForm bordForm) {
         this.bordForm = bordForm;
-//        this.bordForm = bordForm;
         spelers = new Speler[2];
         spelBord = new Bord();
     }
@@ -63,7 +62,18 @@ public class Spel {
     public void setHuidigePion(Pion huidigePion) {
         this.huidigePion = huidigePion;
         bordForm.setGeselecteerdePion();
+    }
 
+    public void verwijderHuidigePion() {
+        this.huidigePion = null;
+        bordForm.verwijderGeselecteerdePion();
+    }
+
+    public boolean huidigePionIsEmpty() {
+        if (huidigePion == null)
+            return true;
+        else
+            return false;
     }
 
     public void verkiesBeginnendeSpeler() {

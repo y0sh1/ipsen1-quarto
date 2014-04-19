@@ -8,8 +8,6 @@ import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GeselecteerdePionForm extends Form {
     private Pion geselecteerdePion;
@@ -56,5 +54,10 @@ public class GeselecteerdePionForm extends Form {
             remove(pionLabel);
         }
         tekenPion();
+    }
+
+    public void verwijderGeselecteerdePion() {
+        remove(pionLabel);
+        repaint();
     }
 }

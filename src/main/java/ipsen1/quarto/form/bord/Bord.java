@@ -93,17 +93,19 @@ public class Bord extends Form implements ActionListener {
         label.setBounds(PION_X_LOCATIE, PION_Y_LOCATIE, PION_BREEDTE, PION_HOOGTE);
     }
 
-//    Implementeer mij
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton source = (JButton)e.getSource();
-        source.removeActionListener(this); //knop is nu niet meer klikbaar
-        Pion huidigePion = spel.getHuidigePion();
+        if(spel.getHuidigePion() != null) { //zorgt ervoor dat er niet op het bord geklikt kan worden als er nog geen huidigePion is
+            JButton source = (JButton)e.getSource();
+            source.removeActionListener(this); //knop is nu niet meer klikbaar
+            Pion huidigePion = spel.getHuidigePion();
 
-        for(int i = 0; i < knoppen.length; i++) {
-            if(source == knoppen[i]) {
-                voegIcoonToeAanBord(huidigePion, i);
+            for(int i = 0; i < knoppen.length; i++) {
+                if(source == knoppen[i]) {
+                    voegIcoonToeAanBord(huidigePion, i);
+                }
             }
+            spel.verwijderHuidigePion();
         }
     }
 }

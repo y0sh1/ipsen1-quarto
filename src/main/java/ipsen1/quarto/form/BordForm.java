@@ -78,6 +78,10 @@ public class BordForm extends Form {
         geselecteerdePion.setGeselecteerdePion();
     }
 
+    public void verwijderGeselecteerdePion() {
+        geselecteerdePion.verwijderGeselecteerdePion();
+    }
+
 
     private class ButtonPanel extends JPanel {
         private JButton quartoButton = new JButton("Quarto!"),
