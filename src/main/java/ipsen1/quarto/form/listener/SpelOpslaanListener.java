@@ -15,6 +15,8 @@ public class SpelOpslaanListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        new OpslaanSpel(huidigespel).run();
+        if (huidigespel != null) {
+            new OpslaanSpel(huidigespel).run();
+        }
     }
 }

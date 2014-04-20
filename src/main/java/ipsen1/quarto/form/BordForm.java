@@ -122,7 +122,7 @@ public class BordForm extends Form {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     QuartoApplication.currentApplication()
-                            .presentForm(new InGameMenu());
+                            .presentForm(new InGameMenu(opslaanListener));
                 }
             });
 
