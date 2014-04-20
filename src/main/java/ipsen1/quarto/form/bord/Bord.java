@@ -16,7 +16,7 @@ public class Bord extends Form {
                       height = 4;
 
     // TODO: Uit bord halen en in een eigen BordForm subview stoppen
-    private JLabel statusLabel = new JLabel("Tekst");
+    private JLabel statusLabel;
 
     private VlakButton[][] knoppen = new VlakButton[height][width];
     private JLayeredPane vakkenPanelen[][] = new JLayeredPane[height][width];
@@ -35,9 +35,16 @@ public class Bord extends Form {
         tekenKnoppen();
     }
 
+    @Override
+    protected boolean isPrimaryForm() {
+        return false;
+    }
+
     private void setupStatusPaneel() {
         JPanel statusPaneel = new JPanel();
         statusPaneel.setBackground(QuartoColor.DARK_BROWN);
+
+        statusLabel = new JLabel();
         statusLabel.setFont(new Font("Arial", Font.PLAIN, 30));
         statusLabel.setForeground(Color.WHITE);
         statusLabel.setVerticalAlignment(SwingConstants.TOP);

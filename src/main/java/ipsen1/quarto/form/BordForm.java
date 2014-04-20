@@ -21,6 +21,7 @@ public class BordForm extends Form {
     private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm();
 
     public BordForm() {
+        super();
         setLayout(new BorderLayout(0, 0));
         setBackground(QuartoColor.DARK_BROWN);
 
