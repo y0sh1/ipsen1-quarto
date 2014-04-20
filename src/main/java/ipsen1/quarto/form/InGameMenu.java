@@ -2,6 +2,7 @@ package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.form.menu.MenuButton;
+import ipsen1.quarto.form.pionnen.PionButton;
 import ipsen1.quarto.task.LaadSpel;
 import ipsen1.quarto.task.LeesInstructies;
 import ipsen1.quarto.task.OpslaanSpel;
@@ -30,16 +31,18 @@ public class InGameMenu extends Form {
     }
 
     private JButton
-            resumeButton = new MenuButton("Spel hervatten"),
-            savebutton = new MenuButton("Spel opslaan"),
-            loadButton = new MenuButton("Spel laden"),
-            instructionsButton = new MenuButton("Instructies"),
-            mainMenuButton = new MenuButton("Hoofdmenu"),
-            exitButton = new MenuButton("Afsluiten");
+            resumeButton = new MenuButton("Spel hervatten", MenuButton.INGAME_MENU_DIMENSION),
+            savebutton = new MenuButton("Spel opslaan", MenuButton.INGAME_MENU_DIMENSION),
+            loadButton = new MenuButton("Spel laden", MenuButton.INGAME_MENU_DIMENSION),
+            instructionsButton = new MenuButton("Instructies", MenuButton.INGAME_MENU_DIMENSION),
+            mainMenuButton = new MenuButton("Hoofdmenu", MenuButton.INGAME_MENU_DIMENSION),
+            exitButton = new MenuButton("Afsluiten", MenuButton.INGAME_MENU_DIMENSION);
 
     private void addButtons() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(7, 1, 0, 32));
+        final int side_margin = (int) getPreferredSize().getWidth() / 3;
+        buttonPanel.setBorder(new EmptyBorder(0, side_margin, 0, side_margin));
         buttonPanel.setOpaque(false);
 
         resumeButton.addActionListener(new ActionListener() {

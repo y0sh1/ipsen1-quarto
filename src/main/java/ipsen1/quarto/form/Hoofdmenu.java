@@ -11,8 +11,8 @@ import java.awt.*;
 
 public class Hoofdmenu extends Form {
     private final String title = "Quarto!";
-    private final int width = 800,
-                      height = 600;
+    private final int width = 1024,
+                      height = 768;
     private final int vMargin = 32,
                       hMargin = 32;
 
@@ -62,7 +62,7 @@ public class Hoofdmenu extends Form {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(5, 1, hMargin, vMargin));
         buttonsPanel.setOpaque(false);
-        buttonsPanel.setBorder(new EmptyBorder(0, 48, 0, 0));
+        buttonsPanel.setBorder(new EmptyBorder(0, hMargin * 2, 0, 0));
 
         for(int i = 0; i < buttons.length; i++) {
             JButton button = new MenuButton(buttons[i]);
@@ -73,7 +73,7 @@ public class Hoofdmenu extends Form {
             buttonsPanel.add(button);
         }
 
-        buttonsPanel.setPreferredSize(new Dimension(width / 4, height));
+        buttonsPanel.setPreferredSize(new Dimension(width / 3, height));
 
         return buttonsPanel;
     }

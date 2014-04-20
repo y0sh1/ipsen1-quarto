@@ -2,6 +2,7 @@ package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.form.menu.MenuButton;
+import ipsen1.quarto.util.FontOpenSans;
 import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
@@ -11,16 +12,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Instructies extends Form {
-    public Instructies(){
-        super();
+    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
+    private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0, null);
+    }
+
+    public Instructies() {
         // Instellen Formaat en layout
-        setPreferredSize(new Dimension(800, 600));
-        setLayout(new BorderLayout(10,10));
+        setPreferredSize(new Dimension(1024, 768));
+        setLayout(new BorderLayout(10, 10));
         setBackground(QuartoColor.DARK_BROWN);
         // Defineren Titel koptekst
         JLabel titelLabel = new JLabel("Instructies", SwingConstants.CENTER);
-        titelLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
+        titelLabel.setFont(FontOpenSans.create(48));
         titelLabel.setForeground(QuartoColor.WHITE);
 
         // Defineren Instructie tekst
