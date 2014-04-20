@@ -47,7 +47,6 @@ public class ControleerQuarto extends Task {
             }
         }
 
-
         System.out.println("----------------");
         System.out.println("STATUS CONTROLEER QUARTO NA UITVOEREN:");
         System.out.println("isQuarto: " + spel.isQuarto());
@@ -65,8 +64,6 @@ public class ControleerQuarto extends Task {
         System.out.println("isGeldigeQuart() == false");
         return false;
     }
-
-
 
     public boolean horizontalCheck() {
         for(int y = 0; y < matrix.length; y++) {
@@ -96,6 +93,7 @@ public class ControleerQuarto extends Task {
                 return true;
             }
         }
+
         if(checkCombinatie(matrix[3][0], matrix[2][1], matrix[1][2], matrix[0][3])) {
             if(!combinationExistsInBlacklist(3, 0, 0, 3)) {
                 return true;

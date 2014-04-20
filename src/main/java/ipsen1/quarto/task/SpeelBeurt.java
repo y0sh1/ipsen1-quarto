@@ -42,7 +42,7 @@ public class SpeelBeurt extends Task {
         bordForm.getBord().redraw();
 
 
-        bordForm.getButtonPanel().setQuartoListener(new GeefQuartoAanActionListener(spel));
+        bordForm.getButtonPanel().setQuartoListener(new GeefQuartoAanActionListener(spel, bordForm));
         bordForm.getButtonPanel().redraw();
     }
 

@@ -1,5 +1,7 @@
 package ipsen1.quarto.business;
 
+import ipsen1.quarto.task.SluitSpelAf;
+
 public class Spel {
     // Is er een Quarto?
     private boolean quarto = false;
@@ -27,9 +29,8 @@ public class Spel {
         // TODO: Implementeer mij
     }
 
-    @Deprecated
     public void spelAfsluiten() {
-        // TODO: Implementeer mij
+        new SluitSpelAf().run();
     }
 
     public void volgendeSpeler() {
