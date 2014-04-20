@@ -6,7 +6,6 @@ public class VlakButton extends JButton {
     private static final ImageIcon VAKJE_ICOON = new ImageIcon("src/main/resources/Vakje.png");
 
     private int x = 0, y = 0;
-    private final int width = 192, height = 192;
 
     public VlakButton(int x, int y) {
         this.x = x;

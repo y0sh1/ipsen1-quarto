@@ -23,7 +23,6 @@ public class SpeelBeurt extends Task {
 
     private Spel spel;
     private BordForm bordForm;
-    private ControleerQuarto controleerQuarto;
 
     @Override
     public void execute() {

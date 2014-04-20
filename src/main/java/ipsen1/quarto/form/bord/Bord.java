@@ -83,11 +83,6 @@ public class Bord extends Form {
         jLayeredPane.moveToFront(label);
     }
 
-    public void voegPionnenToe(Pion[] pionnen) {
-        for(Pion p : pionnen)
-            voegPionToe(p);
-    }
-
     private PlaatsPionActionListener plaatsPionListener;
 
     public void setPlaatsPionListener(PlaatsPionActionListener plaatsPionListener) {
