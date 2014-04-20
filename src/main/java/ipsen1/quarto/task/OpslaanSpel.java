@@ -1,10 +1,11 @@
 package ipsen1.quarto.task;
 
 import ipsen1.quarto.business.Spel;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class OpslaanSpel extends Task {
     public Spel huidigespel = new Spel();
@@ -27,10 +28,15 @@ public class OpslaanSpel extends Task {
     public void execute() {
         try{
             // Serialize data object to a file
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("MyObject.ser"));
+
+            // Formatteer Date
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH mm");
+            String dateString = df.format(new Date());
+
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Quarto " +
+                    dateString + ".sav"));
             out.writeObject(huidigespel);
             out.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
