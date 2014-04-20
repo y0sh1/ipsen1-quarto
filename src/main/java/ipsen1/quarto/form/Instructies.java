@@ -2,11 +2,9 @@ package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.form.menu.MenuButton;
-import ipsen1.quarto.task.LeesInstructies;
 import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
