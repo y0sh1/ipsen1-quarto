@@ -1,82 +1,96 @@
+//Auteur klasse: Tim Vane
+
 package ipsen1.quarto.form.bord;
 
+import ipsen1.quarto.business.Pion;
 import ipsen1.quarto.form.Form;
+import ipsen1.quarto.form.listener.PlaatsPionActionListener;
+import ipsen1.quarto.form.pionnen.PionLabel;
 import ipsen1.quarto.util.QuartoColor;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Bord extends Form implements ActionListener {
+public class Bord extends Form {
     private final int size = 768;
-    private JLabel statusLabel = new JLabel("TIJDELIJKE STATUS TEKST. AANPASSEN!!!!");
-    private JButton[] knoppen = new JButton[4 * 4];
+    private final int width = 4,
+                      height = 4;
+
+    // TODO: Uit bord halen en in een eigen BordForm subview stoppen
+    private JLabel statusLabel = new JLabel("Tekst");
+
+    private VlakButton[][] knoppen = new VlakButton[height][width];
+    private JLayeredPane vakkenPanelen[][] = new JLayeredPane[height][width];
 
     public Bord() {
         setPreferredSize(new Dimension(size, size));
         setLayout(new BorderLayout(100, 100));
         setBackground(QuartoColor.DARK_BROWN);
-        setupStatusPaneel();
-        setupKnoppen();
+        redraw();
     }
 
-    public void setStatusText(String status) {
-        this.statusLabel.setText(status);
+    @Override
+    public void redraw() {
+        removeAll();
+        setupStatusPaneel();
+        tekenKnoppen();
     }
 
     private void setupStatusPaneel() {
         JPanel statusPaneel = new JPanel();
         statusPaneel.setBackground(QuartoColor.DARK_BROWN);
-        statusLabel.setFont(new Font("Arial", 1, 30));
+        statusLabel.setFont(new Font("Arial", Font.PLAIN, 30));
         statusLabel.setForeground(Color.WHITE);
+        statusLabel.setVerticalAlignment(SwingConstants.TOP);
+        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         statusPaneel.add(statusLabel);
 
         this.add(statusPaneel, BorderLayout.NORTH);
     }
 
-    private void setupKnoppen() {
-        final ImageIcon VAKJE_ICOON = new ImageIcon("src/main/resources/Vakje.png");
-        int knopNummer = 0;
-        JPanel vakkenPaneel = new JPanel();
-        vakkenPaneel.setBackground(QuartoColor.DARK_BROWN);
-        vakkenPaneel.setLayout(new GridLayout(4, 4, -50, 0));
+    private void tekenKnoppen() {
+        JPanel vakkenHoofdPaneel = new JPanel();
+        vakkenHoofdPaneel.setBackground(QuartoColor.DARK_BROWN);
+        vakkenHoofdPaneel.setLayout(new GridLayout(width, height, 0, 0));
 
-        for (int i = 0; i < knoppen.length; i++) {
-            knoppen[i] = new JButton(VAKJE_ICOON);
-            knoppen[i].setPreferredSize(new Dimension(125, 85));
-            knoppen[i].addActionListener(this);
+        for(int y = 0; y < height; y++) {
+            for(int x = 0; x < width; x++) {
+                VlakButton button = new VlakButton(x, y);
+                if (plaatsPionListener != null)
+                    button.addActionListener(plaatsPionListener);
 
-            // Haalt de stijl van de JButton weg zodat alleen het rondje over blijft.
-            knoppen[i].setContentAreaFilled(false);
-            knoppen[i].setBorderPainted(false);
-            knoppen[i].setFocusPainted(false);
+                /* maakt een paneel aan met een standaard FlowLayout zodat de knoppen hun eigen grootte
+                   behouden aangezien dat niet mogelijk is met de GridLayout. */
+                vakkenPanelen[y][x] = new JLayeredPane();
+                vakkenPanelen[y][x].add(button);
 
-
-            // maakt een paneel aan met een standaard FlowLayout zodat de knoppen kunnen resizen aangezien dat niet mogelijk is met de GridLayout
-            JPanel paneel = new JPanel();
-            paneel.add(knoppen[i]);
-            paneel.setBackground(QuartoColor.DARK_BROWN);
-            vakkenPaneel.add(paneel);
+                vakkenHoofdPaneel.add(vakkenPanelen[y][x]);
+                knoppen[y][x] = button;
+            }
+            add(vakkenHoofdPaneel, BorderLayout.CENTER);
         }
-
-        add(vakkenPaneel, BorderLayout.CENTER);
     }
 
-    //Werkt nog niet goed
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(new Color(87, 31, 31));
-        g.drawOval(getWidth() / 2 - 300, 125, 600, 600);
+    public void setStatusText(String text) {
+        statusLabel.setText(text);
     }
 
-//    Implementeer mij
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton source = (JButton)e.getSource();
-        source.removeActionListener(this);
+    public void voegPionToe(Pion pion) {
+        PionLabel label = new PionLabel(pion);
+        JLayeredPane jLayeredPane = vakkenPanelen[pion.getY()][pion.getX()];
 
-        System.out.println(source);
+        jLayeredPane.add(label);
+        jLayeredPane.moveToFront(label);
+    }
+
+    public void voegPionnenToe(Pion[] pionnen) {
+        for(Pion p : pionnen)
+            voegPionToe(p);
+    }
+
+    private PlaatsPionActionListener plaatsPionListener;
+
+    public void setPlaatsPionListener(PlaatsPionActionListener plaatsPionListener) {
+        this.plaatsPionListener = plaatsPionListener;
     }
 }
