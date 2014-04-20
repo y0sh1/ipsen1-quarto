@@ -15,6 +15,22 @@ public class Pion implements Serializable{
         // TODO: Is deze constructor nodig?
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Pion))
+            return false;
+
+        Pion pion = (Pion) obj;
+        if(getHoogte() == pion.getHoogte() &&
+           getHol() == pion.getHol() &&
+           getKleur() == pion.getKleur() &&
+           getVorm() == pion.getVorm()
+        )
+            return true;
+
+        return false;
+    }
+
     public Pion(Vorm vorm, Kleur kleur, Hoogte hoogte, Hol hol) {
         this.vorm = vorm;
         this.kleur = kleur;
