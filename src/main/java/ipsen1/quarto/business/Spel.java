@@ -118,10 +118,10 @@ public class Spel {
 
     public String getStatusText() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<html>");
+        sb.append("<html><center>");
 
         sb.append(getHuidigeSpeler().getNaam());
-        sb.append(" is aan de beurt.");
+        sb.append(" is aan de beurt.</center>");
         sb.append("<br>");
 
         if(geselecteerdePionIsLeeg())
