@@ -1,9 +1,10 @@
 package ipsen1.quarto.business;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bord {
+public class Bord implements Serializable {
     private Pion[][] matrix;
 
     public final int width = 4,

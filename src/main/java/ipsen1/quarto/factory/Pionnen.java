@@ -20,16 +20,14 @@ public class Pionnen extends ArrayList<Pion> {
      * Return an array of all unique pawn combinations.
      * @return Pion[]
      */
-    public static Pion[] all() {
-        Pion[] pionnen = new Pion[16];
-        int i = 0;
+    public static Pionnen all() {
+        Pionnen pionnen = new Pionnen();
 
         for(Vorm v : Vorm.values()) {
             for (Kleur k : Kleur.values()) {
                 for (Hoogte h : Hoogte.values()) {
                     for (Hol ho : Hol.values()) {
-                        pionnen[i] = new Pion(v, k, h, ho);
-                        i++;
+                        pionnen.add(new Pion(v, k, h, ho));
                     }
                 }
             }

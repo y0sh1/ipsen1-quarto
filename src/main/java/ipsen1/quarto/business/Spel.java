@@ -1,13 +1,17 @@
 package ipsen1.quarto.business;
 
 import ipsen1.quarto.task.SluitSpelAf;
+import ipsen1.quarto.factory.Pionnen;
 
-public class Spel {
+import java.io.Serializable;
+
+public class Spel implements Serializable{
     // Is er een Quarto?
     private boolean quarto = false;
 
     private Bord spelBord;
 
+    private Pionnen resterendePionnen;
     private Pion geselecteerdePion;
 
     private Speler[] spelers;
@@ -21,6 +25,8 @@ public class Spel {
             new Speler("Speler 1"),
             new Speler("Speler 2")
         };
+        verkiesBeginnendeSpeler();
+        resterendePionnen = Pionnen.all();
         spelBord = new Bord();
     }
 
@@ -116,18 +122,33 @@ public class Spel {
         quartoBeurtTeller = 0;
     }
 
+    public Pionnen getResterendePionnen() {
+        return resterendePionnen;
+    }
+
     public String getStatusText() {
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
 
-        sb.append(getHuidigeSpeler().getNaam());
-        sb.append(" is aan de beurt.");
-        sb.append("<br>");
+        if(isQuarto()) {
+            sb.append("Quarto!");
+            sb.append("<br>");
+            sb.append(getHuidigeSpeler().getNaam());
+            sb.append(" heeft gewonnen.");
+        } else if(resterendePionnen.size() == 0) {
+            sb.append("Gelijkspel!");
+            sb.append("<br>");
+            sb.append("Er zijn geen stukken meer over.");
+        } else {
+            sb.append(getHuidigeSpeler().getNaam());
+            sb.append(" is aan de beurt.");
+            sb.append("<br>");
 
-        if(geselecteerdePionIsLeeg())
-            sb.append("Kies een stuk uit voor de tegenstander.");
-        else
-            sb.append("Plaats het stuk.");
+            if (geselecteerdePionIsLeeg())
+                sb.append("Kies een stuk uit voor de tegenstander.");
+            else
+                sb.append("Plaats het stuk.");
+        }
 
         sb.append("</html>");
 

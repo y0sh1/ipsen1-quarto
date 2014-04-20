@@ -5,10 +5,9 @@ import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.business.Speler;
 import ipsen1.quarto.form.BordForm;
 import ipsen1.quarto.form.Hoofdmenu;
+import ipsen1.quarto.form.listener.SpelOpslaanListener;
 import ipsen1.quarto.form.KiesSpelersForm;
 import ipsen1.quarto.form.listener.KiesSpelersActionListener;
-
-import javax.swing.*;
 
 public class StartNieuwSpel extends Task{
     private boolean isInHoofdmenu() {
@@ -36,6 +35,7 @@ public class StartNieuwSpel extends Task{
             spel.setSpelers(spelers);
             BordForm bord = new BordForm();
 
+            bord.getButtonPanel().setSpelOpslaanListener(new SpelOpslaanListener(spel));
             new SpeelBeurt().execute(spel, bord);
 
             QuartoApplication.currentApplication().presentForm(bord);
