@@ -33,8 +33,10 @@ public class Instructies extends Form {
 
         // Defineren Instructie tekst
         JLabel instructieTekst = new JLabel();
-        instructieTekst.setBorder(new EmptyBorder(0,55,0,55));
         instructieTekst.setForeground(QuartoColor.WHITE);
+
+        final int side_margin = 1024 / 6;
+        setBorder(new EmptyBorder(0, side_margin, 55, side_margin));
 
         // Vullen instructie tekst
         StringBuilder sb = new StringBuilder();
