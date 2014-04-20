@@ -77,7 +77,8 @@ public class InGameMenu extends Form {
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Pop the in-game menu and the form underneath it
+                // Pop the in-game menu, the board and the player choice form underneath it
+                QuartoApplication.currentApplication().popForm();
                 QuartoApplication.currentApplication().popForm();
                 QuartoApplication.currentApplication().popForm();
             }
