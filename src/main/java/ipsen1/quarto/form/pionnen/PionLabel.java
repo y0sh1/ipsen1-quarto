@@ -51,11 +51,4 @@ public class PionLabel extends JLabel {
         else
             drawImage();
     }
-
-    public void fixImage() {
-        // FIXME: Dit is een vreselijke hack om te zorgen
-        // dat het plaatje netjes zichtbaar wordt...
-        setVisible(false);
-        setVisible(true);
-    }
 }

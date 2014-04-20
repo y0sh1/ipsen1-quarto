@@ -37,8 +37,6 @@ public class GeselecteerdePionForm extends Form {
         pionLabel.redraw();
 
         add(pionLabel, BorderLayout.CENTER);
-
-        pionLabel.fixImage();
     }
 
     public void setGeselecteerdePion(Pion geselecteerdePion) {

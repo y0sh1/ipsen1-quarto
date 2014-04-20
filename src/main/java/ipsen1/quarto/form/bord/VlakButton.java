@@ -24,8 +24,6 @@ public class VlakButton extends JButton {
         setFocusPainted(false);
         setOpaque(false);
         setContentAreaFilled(false);
-
-        setBounds(50, 0, width, height);
         setIcon(VAKJE_ICOON);
     }
 
