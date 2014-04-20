@@ -34,7 +34,6 @@ public class GeselecteerdePionForm extends Form {
 
         pionLabel = new PionLabel(geselecteerdePion);
         pionLabel.setSize(new Dimension(320 / 2, 540 / 2));
-        pionLabel.redraw();
 
         add(pionLabel, BorderLayout.CENTER);
     }

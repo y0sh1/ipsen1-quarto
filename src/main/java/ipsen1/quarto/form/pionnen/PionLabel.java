@@ -25,10 +25,6 @@ public class PionLabel extends JLabel {
         redraw();
     }
 
-    private void drawEmpty() {
-        // TODO: Zet een placeholder neer als er nog geen pion gekozen is
-    }
-
     private final int PION_BREEDTE = 120,
                       PION_HOOGTE = 120,
                       PION_Y_LOCATIE = -8,
@@ -46,9 +42,6 @@ public class PionLabel extends JLabel {
     }
 
     public void redraw() {
-        if(pion == null)
-            drawEmpty();
-        else
-            drawImage();
+        if(pion != null) drawImage();
     }
 }
