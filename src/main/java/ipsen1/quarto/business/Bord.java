@@ -13,7 +13,6 @@ public class Bord {
 
     public Bord() {
         matrix = new Pion[height][width];
-//        blackListedCombinaties.add(new int[] {0,0,3,3});
     }
 
     public void setPion(Pion pion) {
