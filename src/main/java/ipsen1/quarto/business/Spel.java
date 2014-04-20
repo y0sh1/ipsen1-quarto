@@ -56,6 +56,7 @@ public class Spel {
         return spelBord;
     }
 
+
     public Pion getGeselecteerdePion() {
         return geselecteerdePion;
     }
