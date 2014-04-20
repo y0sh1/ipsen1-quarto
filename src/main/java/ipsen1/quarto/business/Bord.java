@@ -15,8 +15,12 @@ public class Bord {
         matrix = new Pion[height][width];
     }
 
-    public void setPion(Pion pion) {
-        matrix[pion.getY()][pion.getX()] = pion;
+    public boolean setPion(Pion pion) {
+        if(matrix[pion.getY()][pion.getX()] == null) {
+            matrix[pion.getY()][pion.getX()] = pion;
+            return true;
+        }
+        return false;
     }
 
     public void blackListHuidigeCombinatie(int[] combinatie) {

@@ -86,8 +86,8 @@ public class Spel {
         huidigeSpeler = (int) Math.floor(Math.random() * aantalSpelers);
     }
 
-    public void plaatsPion(Pion pion) {
-        spelBord.setPion(pion);
+    public boolean plaatsPion(Pion pion) {
+        return spelBord.setPion(pion);
     }
 
     public void slaSpelOp() {
