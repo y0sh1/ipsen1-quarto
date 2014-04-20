@@ -1,6 +1,8 @@
 package ipsen1.quarto.task;
 
 import ipsen1.quarto.business.Spel;
+
+import javax.swing.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -38,8 +40,16 @@ public class OpslaanSpel extends Task {
                     dateString + ".sav"));
             out.writeObject(huidigespel);
             out.close();
+
+            // Informatieve message als spel succesvol is opgeslagen.
+            String message = "Het spel is succesvol opgeslagen met de naam: " + "\"Quarto " +
+                    dateString + ".sav\"";
+            String title = "Spel opslaan";
+            JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 }
