@@ -14,14 +14,17 @@ public class LeesInstructies extends Task {
     private boolean isInHoofdmenu() {
         return QuartoApplication.currentApplication().currentForm() instanceof Hoofdmenu;
     }
+
     @Override
     public boolean validate() {
         return true;
     }
+
     @Override
     public void execute() {
         QuartoApplication.currentApplication().presentForm(new Instructies());
     }
+
     public void hideInstructies() {
         QuartoApplication.currentApplication().popForm();
     }
