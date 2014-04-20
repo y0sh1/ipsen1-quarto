@@ -1,6 +1,5 @@
 package ipsen1.quarto.form;
 
-import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.business.Speler;
 import ipsen1.quarto.form.listener.KiesSpelersActionListener;
 import ipsen1.quarto.form.menu.MenuButton;
@@ -10,31 +9,18 @@ import ipsen1.quarto.util.QuartoColor;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class KiesSpelersForm extends Form {
-    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
-    private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
-
     private KiesSpelersActionListener kiesSpelersListener;
 
     public KiesSpelersForm() {
-        setPreferredSize(new Dimension(1024, 768));
+        super();
         setLayout(new BorderLayout(10, 10));
-        setBackground(QuartoColor.DARK_BROWN);
-        redraw();
     }
 
     public void setKiesSpelersListener(KiesSpelersActionListener kiesSpelersListener) {
         this.kiesSpelersListener = kiesSpelersListener;
         redraw();
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(background, 0, 0, null);
     }
 
     public Speler[] getSpelers() {
@@ -48,6 +34,7 @@ public class KiesSpelersForm extends Form {
     private JTextField[] textFields;
 
     public void redraw() {
+        super.redraw();
         removeAll();
 
         // Defineren Titel koptekst

@@ -15,16 +15,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class BordForm extends Form {
-    private final int width = 1024,
-                      height = 768;
-
     private BeschikbarePionnenForm beschikbarePionnen = new BeschikbarePionnenForm();
     private ButtonPanel buttonPanel = new ButtonPanel();
     private Bord bord = new Bord();
     private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm();
 
     public BordForm() {
-        setPreferredSize(new Dimension(width, height));
         setLayout(new BorderLayout(0, 0));
         setBackground(QuartoColor.DARK_BROWN);
 
@@ -36,7 +32,7 @@ public class BordForm extends Form {
 
         JPanel sidebar = new JPanel();
         sidebar.setBackground(QuartoColor.DARK_BROWN);
-        sidebar.setPreferredSize(new Dimension(256, height));
+        sidebar.setPreferredSize(new Dimension(256, 768));
         sidebar.add(beschikbarePionnen);
         sidebar.add(geselecteerdePion);
         sidebar.add(buttonPanel);

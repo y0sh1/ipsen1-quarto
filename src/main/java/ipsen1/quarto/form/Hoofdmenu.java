@@ -11,16 +11,10 @@ import java.awt.*;
 
 public class Hoofdmenu extends Form {
     private final String title = "Quarto!";
-    private final int width = 1024,
-                      height = 768;
     private final int vMargin = 32,
                       hMargin = 32;
 
-    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
-    private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
-
     public Hoofdmenu() {
-        setPreferredSize(new Dimension(width, height));
         setLayout(new BorderLayout(hMargin, vMargin));
 
         add(createTitleLabel(), BorderLayout.NORTH);
@@ -29,7 +23,7 @@ public class Hoofdmenu extends Form {
 
     private JLabel createTitleLabel() {
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
-        titleLabel.setPreferredSize(new Dimension(width, height / 6));
+        titleLabel.setPreferredSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT / 6));
 
         Font titleFont = FontOpenSans.create(64).deriveFont(Font.BOLD);
 
@@ -37,12 +31,6 @@ public class Hoofdmenu extends Form {
         titleLabel.setForeground(Color.WHITE);
 
         return titleLabel;
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(background, 0, 0, null);
     }
 
     private final String[] buttons = new String[] {
@@ -73,7 +61,7 @@ public class Hoofdmenu extends Form {
             buttonsPanel.add(button);
         }
 
-        buttonsPanel.setPreferredSize(new Dimension(width / 3, height));
+        buttonsPanel.setPreferredSize(new Dimension(DEFAULT_WIDTH / 3, DEFAULT_HEIGHT));
 
         return buttonsPanel;
     }

@@ -16,11 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InGameMenu extends Form {
-    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
-    private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
-
     public InGameMenu() {
-        setPreferredSize(new Dimension(1024, 768));
         setLayout(new BorderLayout());
 
         JLabel pauseLabel = new JLabel("Gepauzeerd", SwingConstants.CENTER);
@@ -98,11 +94,5 @@ public class InGameMenu extends Form {
         buttonPanel.add(exitButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(background, 0, 0, null);
     }
 }
