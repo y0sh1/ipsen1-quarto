@@ -65,7 +65,7 @@ public class ControleerQuarto extends Task {
         return false;
     }
 
-    public boolean horizontalCheck() {
+    private boolean horizontalCheck() {
         for(int y = 0; y < matrix.length; y++) {
             if(checkCombinatie(matrix[y][0], matrix[y][1], matrix[y][2], matrix[y][3])) {
                 if(!combinationExistsInBlacklist(y, 0, y, 3)) {
@@ -76,7 +76,7 @@ public class ControleerQuarto extends Task {
         return false;
     }
 
-    public boolean verticalCheck() {
+    private boolean verticalCheck() {
         for(int x = 0; x < matrix.length; x++) {
             if(checkCombinatie(matrix[0][x], matrix[1][x], matrix[2][x], matrix[3][x])) {
                 if(!combinationExistsInBlacklist(x, 0, x, 3)) {
