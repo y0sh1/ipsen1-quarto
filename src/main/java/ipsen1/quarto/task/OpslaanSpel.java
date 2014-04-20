@@ -33,6 +33,7 @@ public class OpslaanSpel extends Task {
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH mm");
             String dateString = df.format(new Date());
 
+            // Voorbeeld save bestandsnaam: "Quarto 20-04-2014 21 35.sav"
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Quarto " +
                     dateString + ".sav"));
             out.writeObject(huidigespel);
