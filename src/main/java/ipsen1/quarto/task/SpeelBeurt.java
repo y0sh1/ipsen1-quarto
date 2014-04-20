@@ -10,20 +10,28 @@ import ipsen1.quarto.form.listener.KiesPionActionListener;
 import ipsen1.quarto.form.listener.PlaatsPionActionListener;
 
 public class SpeelBeurt extends Task {
+    private Spel spel;
+    private BordForm bordForm;
+    private ControleerQuarto controleerQuarto;
+
+    public SpeelBeurt(Spel spel, BordForm bord) {
+        this.spel = spel;
+        this.bordForm = bord;
+    }
+
     @Override
     public boolean validate() {
         if(!(QuartoApplication.currentApplication().currentForm() instanceof BordForm))
             return false;
 
-        if(spel != null && !spel.isQuarto())
+        if(spel == null || bordForm == null)
+            return false;
+
+        if(spel.isQuarto())
             return false;
 
         return true;
     }
-
-    private Spel spel;
-    private BordForm bordForm;
-    private ControleerQuarto controleerQuarto;
 
     @Override
     public void execute() {
@@ -46,16 +54,10 @@ public class SpeelBeurt extends Task {
         bordForm.getButtonPanel().redraw();
     }
 
-    public void execute(Spel spel, BordForm bord) {
-        this.spel = spel;
-        this.bordForm = bord;
-        execute();
-    }
-
     public boolean kiesPion(Pion pion) {
-        if (spel.getGeselecteerdePion() != null) {
+        if (spel.getGeselecteerdePion() != null)
             return false;
-        }
+
         spel.setGeselecteerdePion(pion);
         bordForm.getGeselecteerdePion().setGeselecteerdePion(pion);
 

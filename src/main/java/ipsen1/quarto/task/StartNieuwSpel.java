@@ -20,7 +20,7 @@ public class StartNieuwSpel extends Task {
         Spel spel = new Spel();
         BordForm bord = new BordForm();
 
-        new SpeelBeurt().execute(spel, bord);
+        new SpeelBeurt(spel, bord).execute();
 
         QuartoApplication.currentApplication().presentForm(bord);
     }
