@@ -37,6 +37,7 @@ public class QuartoApplication extends JFrame {
         setBackground(QuartoColor.DARK_BROWN);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
     }
     /**
      * This method exists so we can run the application 'headless' for unit testing.
