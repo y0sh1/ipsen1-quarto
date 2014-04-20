@@ -52,7 +52,7 @@ public class Bord extends Form {
     private void tekenKnoppen() {
         JPanel vakkenHoofdPaneel = new JPanel();
         vakkenHoofdPaneel.setBackground(QuartoColor.DARK_BROWN);
-        vakkenHoofdPaneel.setLayout(new GridLayout(width, height, 0, 0));
+        vakkenHoofdPaneel.setLayout(new GridLayout(width, height));
 
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++) {
