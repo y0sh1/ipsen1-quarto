@@ -1,22 +1,25 @@
 package ipsen1.quarto.form;
 
+import ipsen1.quarto.form.menu.MenuButton;
 import ipsen1.quarto.task.*;
 import ipsen1.quarto.util.FontOpenSans;
 import ipsen1.quarto.util.TaskListener;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.io.*;
 
 public class Hoofdmenu extends Form {
     private final String title = "Quarto!";
     private final int width = 800,
                       height = 600;
-    private final int vMargin = 32;
-    private final int hMargin = 32;
+    private final int vMargin = 32,
+                      hMargin = 32;
+
+    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
+    private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
 
     public Hoofdmenu() {
-        super();
         setPreferredSize(new Dimension(width, height));
         setLayout(new BorderLayout(hMargin, vMargin));
 
@@ -28,11 +31,18 @@ public class Hoofdmenu extends Form {
         JLabel titleLabel = new JLabel(title, SwingConstants.CENTER);
         titleLabel.setPreferredSize(new Dimension(width, height / 6));
 
-        Font titleFont = FontOpenSans.create(48);
+        Font titleFont = FontOpenSans.create(64).deriveFont(Font.BOLD);
 
         titleLabel.setFont(titleFont);
+        titleLabel.setForeground(Color.WHITE);
 
         return titleLabel;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0, null);
     }
 
     private final String[] buttons = new String[] {
@@ -51,17 +61,15 @@ public class Hoofdmenu extends Form {
     private JPanel createButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(5, 1, hMargin, vMargin));
-
-
+        buttonsPanel.setOpaque(false);
+        buttonsPanel.setBorder(new EmptyBorder(0, 48, 0, 0));
 
         for(int i = 0; i < buttons.length; i++) {
-            JButton button = new JButton(buttons[i]);
+            JButton button = new MenuButton(buttons[i]);
             TaskListener listener = listeners[i];
 
             button.addActionListener(listener);
-            button.setBackground(Color.BLACK);
-            button.setForeground(Color.WHITE);
-            button.setFont(FontOpenSans.create(12));
+
             buttonsPanel.add(button);
         }
 

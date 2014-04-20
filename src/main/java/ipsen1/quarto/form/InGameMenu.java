@@ -1,38 +1,47 @@
 package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
+import ipsen1.quarto.form.menu.MenuButton;
 import ipsen1.quarto.task.LaadSpel;
 import ipsen1.quarto.task.LeesInstructies;
 import ipsen1.quarto.task.OpslaanSpel;
 import ipsen1.quarto.task.SluitSpelAf;
+import ipsen1.quarto.util.FontOpenSans;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InGameMenu extends Form {
+    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
+    private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
+
     public InGameMenu() {
-        super();
-
         setPreferredSize(new Dimension(1024, 768));
+        setLayout(new BorderLayout());
 
-        setLayout(new GridLayout(7, 1));
         JLabel pauseLabel = new JLabel("Gepauzeerd", SwingConstants.CENTER);
-        pauseLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 34));
-        add(pauseLabel);
+        pauseLabel.setFont(FontOpenSans.create(48));
+        pauseLabel.setForeground(Color.WHITE);
+        add(pauseLabel, BorderLayout.NORTH);
         addButtons();
     }
 
     private JButton
-            resumeButton = new JButton("Spel hervatten"),
-            savebutton = new JButton("Spel opslaan"),
-            loadButton = new JButton("Spel laden"),
-            instructionsButton = new JButton("Instructies"),
-            mainMenuButton = new JButton("Hoofdmenu"),
-            exitButton = new JButton("Afsluiten");
+            resumeButton = new MenuButton("Spel hervatten"),
+            savebutton = new MenuButton("Spel opslaan"),
+            loadButton = new MenuButton("Spel laden"),
+            instructionsButton = new MenuButton("Instructies"),
+            mainMenuButton = new MenuButton("Hoofdmenu"),
+            exitButton = new MenuButton("Afsluiten");
 
     private void addButtons() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(7, 1, 0, 32));
+        buttonPanel.setOpaque(false);
+
         resumeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,11 +87,19 @@ public class InGameMenu extends Form {
             }
         });
 
-        add(resumeButton);
-        add(savebutton);
-        add(loadButton);
-        add(instructionsButton);
-        add(mainMenuButton);
-        add(exitButton);
+        buttonPanel.add(resumeButton);
+        buttonPanel.add(savebutton);
+        buttonPanel.add(loadButton);
+        buttonPanel.add(instructionsButton);
+        buttonPanel.add(mainMenuButton);
+        buttonPanel.add(exitButton);
+
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0, null);
     }
 }

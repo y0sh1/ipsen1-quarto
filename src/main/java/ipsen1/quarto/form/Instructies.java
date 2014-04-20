@@ -1,6 +1,7 @@
 package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
+import ipsen1.quarto.form.menu.MenuButton;
 import ipsen1.quarto.task.LeesInstructies;
 import ipsen1.quarto.util.QuartoColor;
 
@@ -56,7 +57,7 @@ public class Instructies extends Form {
         instructieTekst.setText(sb.toString());
 
         // Knop aanmaken en invullen
-        JButton okKnop = new JButton("OK, Terug naar menu");
+        JButton okKnop = new MenuButton("OK, Terug naar menu");
         okKnop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
