@@ -64,22 +64,25 @@ public class SpeelBeurt extends Task {
         return true;
     }
 
-    public void plaatsPion(int x, int y) {
+    public boolean plaatsPion(int x, int y) {
         Pion huidigePion = spel.getGeselecteerdePion();
         if(huidigePion == null)
-            return;
+            return false;
 
         huidigePion.setX(x);
         huidigePion.setY(y);
 
-        spel.plaatsPion(huidigePion);
+        if(! spel.plaatsPion(huidigePion))
+            return false;
+
         bordForm.plaatsPion(huidigePion);
         new ControleerQuarto(spel).run();
 
         spel.verwijderGeselecteerdePion();
         bordForm.getGeselecteerdePion().verwijderGeselecteerdePion();
 
-
         bordForm.getBord().setStatusText(spel.getStatusText());
+
+        return true;
     }
 }

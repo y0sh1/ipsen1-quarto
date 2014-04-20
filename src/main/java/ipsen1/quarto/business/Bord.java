@@ -14,11 +14,14 @@ public class Bord implements Serializable {
 
     public Bord() {
         matrix = new Pion[height][width];
-//        blackListedCombinaties.add(new int[] {0,0,3,3});
     }
 
-    public void setPion(Pion pion) {
-        matrix[pion.getY()][pion.getX()] = pion;
+    public boolean setPion(Pion pion) {
+        if(matrix[pion.getY()][pion.getX()] == null) {
+            matrix[pion.getY()][pion.getX()] = pion;
+            return true;
+        }
+        return false;
     }
 
     public void blackListHuidigeCombinatie(int[] combinatie) {

@@ -21,18 +21,13 @@ public class Spel implements Serializable{
     private int quartoBeurtTeller = 0;
 
     public Spel() {
-        spelers = new Speler[2];
-        spelers[0] = new Speler("Tim");
-        spelers[1] = new Speler("Joshua");
+        spelers = new Speler[] {
+            new Speler("Speler 1"),
+            new Speler("Speler 2")
+        };
         verkiesBeginnendeSpeler();
-
         resterendePionnen = Pionnen.all();
-
         spelBord = new Bord();
-    }
-
-    public void quartoAangeven() {
-        // TODO: Implementeer mij
     }
 
     public void spelAfsluiten() {
@@ -76,6 +71,11 @@ public class Spel implements Serializable{
         return spelers;
     }
 
+    public void setSpelers(Speler[] spelers) {
+        this.spelers = spelers;
+        verkiesBeginnendeSpeler();
+    }
+
     public Speler getHuidigeSpeler() {
         return spelers[huidigeSpeler];
     }
@@ -92,8 +92,8 @@ public class Spel implements Serializable{
         huidigeSpeler = (int) Math.floor(Math.random() * aantalSpelers);
     }
 
-    public void plaatsPion(Pion pion) {
-        spelBord.setPion(pion);
+    public boolean plaatsPion(Pion pion) {
+        return spelBord.setPion(pion);
     }
 
     public void slaSpelOp() {

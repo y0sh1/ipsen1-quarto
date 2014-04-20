@@ -71,14 +71,6 @@ public class BordForm extends Form {
         plaatsPion(pion);
     }
 
-    public void hideForm() { // De naam `hide` bestaat al in JComponent, maar is deprecated
-        // TODO: Implementeer mij
-    }
-
-    private void roepQuarto() {
-        System.out.println("Iemand roept Quarto!");
-    }
-
     public Bord getBord() {
         return bord;
     }
