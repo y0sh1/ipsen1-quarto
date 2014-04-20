@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InGameMenu extends Form {
-    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
+    private static final String BACKGROUND_FILENAME = "hout_achtergrond.jpg";
     private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
     private Spel huidigespel;
 

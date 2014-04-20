@@ -11,7 +11,7 @@ public class FontOpenSans {
         Font fontOpenSansReal = null;
         // Font ophalen, koppelen en opblazen
         try {
-            InputStream is = new FileInputStream("src/main/resources/OpenSans-Regular.ttf");
+            InputStream is = new FileInputStream("OpenSans-Regular.ttf");
             fontOpenSansBase = Font.createFont(Font.TRUETYPE_FONT, is);
             fontOpenSansReal = fontOpenSansBase.deriveFont(size);
         } catch (Exception e) {

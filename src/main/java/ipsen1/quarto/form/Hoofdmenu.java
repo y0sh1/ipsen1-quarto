@@ -16,7 +16,7 @@ public class Hoofdmenu extends Form {
     private final int vMargin = 32,
                       hMargin = 32;
 
-    private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
+    private static final String BACKGROUND_FILENAME = "hout_achtergrond.jpg";
     private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
 
     public Hoofdmenu() {

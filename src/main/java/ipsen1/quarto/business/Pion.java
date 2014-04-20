@@ -73,7 +73,7 @@ public class Pion implements Serializable {
     /**
      * Basispad naar de map met pion-afbeeldingen
      */
-    private static final String BASE_PATH = "src/main/resources/pionnen/",
+    private static final String BASE_PATH = "pionnen/",
                                IMAGE_EXTENSION = ".png";
 
     public enum Vorm {
