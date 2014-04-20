@@ -13,7 +13,14 @@ public class PionLabel extends JLabel {
 
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.BOTTOM);
-        setBounds(PION_X_LOCATIE, PION_Y_LOCATIE, PION_BREEDTE, PION_HOOGTE);
+
+        int y_locatie = PION_Y_LOCATIE;
+        if(pion != null && pion.getHoogte() == Pion.Hoogte.LAAG)
+            y_locatie += 20;
+
+        setBounds(PION_X_LOCATIE, y_locatie, PION_BREEDTE, PION_HOOGTE);
+        setPreferredSize(new Dimension(PION_BREEDTE, PION_HOOGTE));
+        setSize(new Dimension(PION_BREEDTE, PION_HOOGTE));
 
         redraw();
     }
@@ -22,17 +29,17 @@ public class PionLabel extends JLabel {
         // TODO: Zet een placeholder neer als er nog geen pion gekozen is
     }
 
-    private final int PION_BREEDTE = 75,
+    private final int PION_BREEDTE = 60,
                       PION_HOOGTE = 100,
-                      PION_Y_LOCATIE = 0,
-                      PION_X_LOCATIE = 0;
+                      PION_Y_LOCATIE = 8,
+                      PION_X_LOCATIE = 32;
 
     private void drawImage() {
         setText(null);
         ImageIcon pionIcoon = pion.getImageIcon();
 
         pionIcoon = new ImageIcon(pionIcoon.getImage()
-            .getScaledInstance(getWidth(), getHeight(), Image.SCALE_DEFAULT));
+            .getScaledInstance(PION_BREEDTE, PION_HOOGTE, Image.SCALE_SMOOTH));
 
         setIcon(pionIcoon);
     }

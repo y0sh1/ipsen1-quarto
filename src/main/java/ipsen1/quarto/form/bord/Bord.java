@@ -23,7 +23,7 @@ public class Bord extends Form {
 
     public Bord() {
         setPreferredSize(new Dimension(size, size));
-        setLayout(new BorderLayout(100, 100));
+        setLayout(new BorderLayout());
         setBackground(QuartoColor.DARK_BROWN);
         redraw();
     }

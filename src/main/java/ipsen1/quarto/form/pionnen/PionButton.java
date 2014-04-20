@@ -30,7 +30,6 @@ public class PionButton extends JButton {
         setFocusPainted(false);
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.BOTTOM);
-        setBounds(192 / 2 , -32, width, height);
     }
 
     private void drawEmpty() {
