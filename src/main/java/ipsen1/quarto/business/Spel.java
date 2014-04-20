@@ -18,15 +18,9 @@ public class Spel {
 
     public Spel() {
         spelers = new Speler[2];
-        spelers[0] = new Speler("Tim");
-        spelers[1] = new Speler("Joshua");
-        verkiesBeginnendeSpeler();
-
+        spelers[0] = new Speler("temp"); // tijdelijke naam
+        spelers[1] = new Speler("temp"); // tijdelijke naam
         spelBord = new Bord();
-    }
-
-    public void quartoAangeven() {
-        // TODO: Implementeer mij
     }
 
     public void spelAfsluiten() {
@@ -68,6 +62,12 @@ public class Spel {
 
     public Speler[] getSpelers() {
         return spelers;
+    }
+
+    public void setSpelers(String[] spelers) {
+        this.spelers[0].setNaam(spelers[0]);
+        this.spelers[1].setNaam(spelers[1]);
+        verkiesBeginnendeSpeler();
     }
 
     public Speler getHuidigeSpeler() {
