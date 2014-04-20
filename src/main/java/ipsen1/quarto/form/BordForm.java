@@ -43,12 +43,20 @@ public class BordForm extends Form {
         add(sidebar, BorderLayout.EAST);
     }
 
-    public void maakWinnaarBekend() {
-        // TODO: Implementeer mij
+    public void maakWinnaarBekend(String speler) {
+        Object[] optie = {"Spel afsluiten"};
+        String message = "De Quarto is geldig! Het spel is gewonnen door " + speler + "!";
+        String title = "Spel gewonnen";
+        JOptionPane.showOptionDialog(null, message, title, JOptionPane.OK_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, optie, optie[0]);
     }
 
-    public void geefOngeldigeQuartoAan() {
-        // TODO: Implementeer mij
+    public void geefOngeldigeQuartoAan(String statusText, String speler) {
+        String message = "De Quarto is ongeldig. De beurt is voorbij en " + speler +
+                " is aan zet";
+        String title = "Ongeldige Quarto!";
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE);
+        bord.setStatusText(statusText);
     }
 
     public void plaatsPion(Pion pion) {
