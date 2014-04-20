@@ -46,14 +46,6 @@ public class ControleerQuarto extends Task {
                 spel.verhoogQuartoBeurtTeller();
             }
         }
-
-        System.out.println("----------------");
-        System.out.println("STATUS CONTROLEER QUARTO NA UITVOEREN:");
-        System.out.println("isQuarto: " + spel.isQuarto());
-        System.out.println("staatQuartoBeurtTellerAan: " + spel.staatQuartoBeurtTellerAan());
-        System.out.println("blacklistedcombinaties size: "+ bord.getBlackListedCombinaties().size());
-        System.out.println("Quartobeurtteller: " + spel.getQuartoBeurtTeller());
-        System.out.println("----------------");
     }
 
     private boolean isGeldigeQuarto() {
@@ -61,7 +53,6 @@ public class ControleerQuarto extends Task {
             return true;
         }
 
-        System.out.println("isGeldigeQuart() == false");
         return false;
     }
 

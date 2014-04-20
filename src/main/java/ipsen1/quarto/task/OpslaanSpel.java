@@ -17,13 +17,7 @@ public class OpslaanSpel extends Task {
     }
 
     public boolean validate() {
-        if (huidigespel != null){
-            System.out.println("Spel is niet Null");
-            return true;
-        } else {
-            System.out.println("Spel is wel Null");
-            return false;
-        }
+        return huidigespel != null;
     }
 
     @Override

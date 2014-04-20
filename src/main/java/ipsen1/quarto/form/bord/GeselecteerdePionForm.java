@@ -29,7 +29,6 @@ public class GeselecteerdePionForm extends Form {
     @Override
     public void redraw() {
         removeAll();
-        System.out.println("redrawing GeselecteerdePionForm");
 
         add(geselecteerdePionLabel, BorderLayout.NORTH);
 

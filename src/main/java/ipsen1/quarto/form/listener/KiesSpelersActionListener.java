@@ -17,7 +17,6 @@ public class KiesSpelersActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Running listener");
         startTask.setSpelers(spelersForm.getSpelers());
         startTask.execute();
     }
