@@ -15,10 +15,10 @@ public class KiesPionActionListener extends SpeelBeurtActionListener implements 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() instanceof PionButton) {
             PionButton button = (PionButton) e.getSource();
-            button.setEnabled(false);
 
-            beurtTask.kiesPion(button.getPion());
-            System.out.println("Pion " + button.getPion().toString() + " gekozen");
+            if (beurtTask.kiesPion(button.getPion())) {
+                button.setEnabled(false);
+            }
         }
     }
 }

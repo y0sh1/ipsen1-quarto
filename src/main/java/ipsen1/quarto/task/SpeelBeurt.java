@@ -52,12 +52,16 @@ public class SpeelBeurt extends Task {
         execute();
     }
 
-    public void kiesPion(Pion pion) {
+    public boolean kiesPion(Pion pion) {
+        if (spel.getGeselecteerdePion() != null) {
+            return false;
+        }
         spel.setGeselecteerdePion(pion);
         bordForm.getGeselecteerdePion().setGeselecteerdePion(pion);
 
         spel.volgendeSpeler(); // TODO: Verplaatsen naar spel?
         bordForm.getBord().setStatusText(spel.getStatusText());
+        return true;
     }
 
     public void plaatsPion(int x, int y) {
