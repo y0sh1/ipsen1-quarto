@@ -17,9 +17,10 @@ public class Spel {
     private int quartoBeurtTeller = 0;
 
     public Spel() {
-        spelers = new Speler[2];
-        spelers[0] = new Speler("temp"); // tijdelijke naam
-        spelers[1] = new Speler("temp"); // tijdelijke naam
+        spelers = new Speler[] {
+            new Speler("Speler 1"),
+            new Speler("Speler 2")
+        };
         spelBord = new Bord();
     }
 
@@ -64,9 +65,8 @@ public class Spel {
         return spelers;
     }
 
-    public void setSpelers(String[] spelers) {
-        this.spelers[0].setNaam(spelers[0]);
-        this.spelers[1].setNaam(spelers[1]);
+    public void setSpelers(Speler[] spelers) {
+        this.spelers = spelers;
         verkiesBeginnendeSpeler();
     }
 

@@ -2,9 +2,11 @@ package ipsen1.quarto.task;
 
 import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.business.Spel;
+import ipsen1.quarto.business.Speler;
 import ipsen1.quarto.form.BordForm;
 import ipsen1.quarto.form.Hoofdmenu;
 import ipsen1.quarto.form.KiesSpelersForm;
+import ipsen1.quarto.form.listener.KiesSpelersActionListener;
 
 import javax.swing.*;
 
@@ -18,19 +20,29 @@ public class StartNieuwSpel extends Task{
         return isInHoofdmenu();
     }
 
+    private Speler[] spelers;
+    private KiesSpelersForm spelersForm;
+
     @Override
     public void execute() {
-        Spel spel = new Spel();
-        BordForm bord = new BordForm();
-//        String[] spelers = new String[2];
-//        spelers[0] = JOptionPane.showInputDialog("Vul de naam van Speler 1 in");
-//        spelers[1] = JOptionPane.showInputDialog("Vul de naam van Speler 2 in");
-//        spel.setSpelers(spelers);
+        if(spelers == null) {
+            spelersForm = new KiesSpelersForm();
+            KiesSpelersActionListener listener = new KiesSpelersActionListener(this, spelersForm);
+            spelersForm.setKiesSpelersListener(listener);
+            QuartoApplication.currentApplication().presentForm(spelersForm);
+        } else {
+            spelers = spelersForm.getSpelers();
+            Spel spel = new Spel();
+            spel.setSpelers(spelers);
+            BordForm bord = new BordForm();
 
+            new SpeelBeurt().execute(spel, bord);
 
-        new SpeelBeurt().execute(spel, bord);
+            QuartoApplication.currentApplication().presentForm(bord);
+        }
+    }
 
-        QuartoApplication.currentApplication().presentForm(bord);
-        QuartoApplication.currentApplication().presentForm(new KiesSpelersForm());
+    public void setSpelers(Speler[] spelers) {
+        this.spelers = spelers;
     }
 }
