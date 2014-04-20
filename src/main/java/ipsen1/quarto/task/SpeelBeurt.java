@@ -8,6 +8,7 @@ import ipsen1.quarto.form.BordForm;
 import ipsen1.quarto.form.listener.GeefQuartoAanActionListener;
 import ipsen1.quarto.form.listener.KiesPionActionListener;
 import ipsen1.quarto.form.listener.PlaatsPionActionListener;
+import ipsen1.quarto.form.listener.SpelOpslaanListener;
 
 public class SpeelBeurt extends Task {
     @Override
@@ -27,8 +28,12 @@ public class SpeelBeurt extends Task {
 
     @Override
     public void execute() {
+        // Koppel een listener aan het bord voor het opslaan van het spel
+        bordForm.getButtonPanel().setSpelOpslaanListener(new SpelOpslaanListener(spel));
+
         // Stap 1.1
-        Pionnen resterendePionnen = spel.getResterendePionnen();
+        Pionnen resterendePionnen = spel.getResterendePionnen(),
+                geplaatstePionnen = spel.getGeplaatstePionnen();
 
         // De KiesPionListener koppelt het kiezen van een pion terug naar de kiesPion method van deze task.
         bordForm.getBeschikbarePionnenForm().setKiesPionListener(new KiesPionActionListener(this));
@@ -40,7 +45,10 @@ public class SpeelBeurt extends Task {
         bordForm.getBord().setPlaatsPionListener(new PlaatsPionActionListener(this));
         bordForm.getBord().setStatusText(spel.getStatusText());
         bordForm.getBord().redraw();
+        bordForm.getBord().voegPionnenToe(geplaatstePionnen);
 
+        bordForm.getGeselecteerdePion().setGeselecteerdePion(spel.getGeselecteerdePion());
+        bordForm.getGeselecteerdePion().redraw();
 
         bordForm.getButtonPanel().setQuartoListener(new GeefQuartoAanActionListener(spel, bordForm));
         bordForm.getButtonPanel().redraw();

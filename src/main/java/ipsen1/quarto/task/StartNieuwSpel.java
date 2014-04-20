@@ -35,7 +35,6 @@ public class StartNieuwSpel extends Task{
             spel.setSpelers(spelers);
             BordForm bord = new BordForm();
 
-            bord.getButtonPanel().setSpelOpslaanListener(new SpelOpslaanListener(spel));
             new SpeelBeurt().execute(spel, bord);
 
             QuartoApplication.currentApplication().presentForm(bord);

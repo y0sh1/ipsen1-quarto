@@ -14,10 +14,10 @@ public class OpslaanSpel extends Task {
 
     public OpslaanSpel(Spel gekozenspel) {
         huidigespel = gekozenspel;
-
     }
+
     public boolean validate() {
-        if (huidigespel!= null){
+        if (huidigespel != null){
             System.out.println("Spel is niet Null");
             return true;
         } else {

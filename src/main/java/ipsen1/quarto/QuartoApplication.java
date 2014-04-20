@@ -92,6 +92,11 @@ public class QuartoApplication extends JFrame {
         return formStack.last();
     }
 
+    public void returnToMainMenu() {
+        while(currentForm() instanceof Hoofdmenu == false)
+            popForm();
+    }
+
     /**
      * Resize the frame to the dimensions (preferredSize) of
      * the current form.

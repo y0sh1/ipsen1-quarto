@@ -3,6 +3,7 @@
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
+import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.form.listener.PlaatsPionActionListener;
 import ipsen1.quarto.form.pionnen.PionLabel;
@@ -16,7 +17,7 @@ public class Bord extends Form {
                       height = 4;
 
     // TODO: Uit bord halen en in een eigen BordForm subview stoppen
-    private JLabel statusLabel = new JLabel("Tekst");
+    private JLabel statusLabel = new JLabel();
 
     private VlakButton[][] knoppen = new VlakButton[height][width];
     private JLayeredPane vakkenPanelen[][] = new JLayeredPane[height][width];
@@ -77,13 +78,13 @@ public class Bord extends Form {
 
     public void voegPionToe(Pion pion) {
         PionLabel label = new PionLabel(pion);
-        JLayeredPane jLayeredPane = vakkenPanelen[pion.getY()][pion.getX()];
+        JLayeredPane layeredPane = vakkenPanelen[pion.getY()][pion.getX()];
 
-        jLayeredPane.add(label);
-        jLayeredPane.moveToFront(label);
+        layeredPane.add(label);
+        layeredPane.moveToFront(label);
     }
 
-    public void voegPionnenToe(Pion[] pionnen) {
+    public void voegPionnenToe(Pionnen pionnen) {
         for(Pion p : pionnen)
             voegPionToe(p);
     }

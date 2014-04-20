@@ -3,7 +3,7 @@ package ipsen1.quarto.business;
 import javax.swing.ImageIcon;
 import java.io.Serializable;
 
-public class Pion implements Serializable{
+public class Pion implements Serializable {
     private Vorm vorm;
     private Kleur kleur;
     private Hoogte hoogte;
@@ -13,6 +13,22 @@ public class Pion implements Serializable{
 
     public Pion() {
         // TODO: Is deze constructor nodig?
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Pion))
+            return false;
+
+        Pion pion = (Pion) obj;
+        if(getHoogte() == pion.getHoogte() &&
+           getHol() == pion.getHol() &&
+           getKleur() == pion.getKleur() &&
+           getVorm() == pion.getVorm()
+        )
+            return true;
+
+        return false;
     }
 
     public Pion(Vorm vorm, Kleur kleur, Hoogte hoogte, Hol hol) {
