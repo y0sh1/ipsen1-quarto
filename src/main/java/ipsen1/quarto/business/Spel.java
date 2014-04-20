@@ -96,8 +96,13 @@ public class Spel {
         // TODO: Implementeer mij
     }
 
+    public int getQuartoBeurtTeller() {
+        return quartoBeurtTeller;
+    }
+
     public boolean staatQuartoBeurtTellerAan() {
-        // TODO: Implementeer mij
+        if(quartoBeurtTeller > 0)
+            return true;
         return false;
     }
 

@@ -9,25 +9,26 @@ public class Bord {
     public final int width = 4,
                      height = 4;
 
-    private List<Pion[][]> blackListedCombinaties = new ArrayList<>();
+    private List<int[]> blackListedCombinaties = new ArrayList<>();
 
     public Bord() {
         matrix = new Pion[height][width];
+//        blackListedCombinaties.add(new int[] {0,0,3,3});
     }
 
     public void setPion(Pion pion) {
         matrix[pion.getY()][pion.getX()] = pion;
     }
 
-    public void blackListHuidigeCombinatie() {
-        blackListedCombinaties.add(matrix.clone());
+    public void blackListHuidigeCombinatie(int[] combinatie) {
+        blackListedCombinaties.add(combinatie);
     }
 
     public Pion[][] getMatrix() {
         return matrix;
     }
 
-    public List<Pion[][]> getBlackListedCombinaties() {
+    public List<int[]> getBlackListedCombinaties() {
         return blackListedCombinaties;
     }
 }
