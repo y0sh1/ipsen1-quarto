@@ -29,19 +29,20 @@ public class PionLabel extends JLabel {
         // TODO: Zet een placeholder neer als er nog geen pion gekozen is
     }
 
-    private final int PION_BREEDTE = 60,
-                      PION_HOOGTE = 100,
-                      PION_Y_LOCATIE = 8,
-                      PION_X_LOCATIE = 32;
+    private final int PION_BREEDTE = 120,
+                      PION_HOOGTE = 120,
+                      PION_Y_LOCATIE = -8,
+                      PION_X_LOCATIE = 2;
 
     private void drawImage() {
         setText(null);
         ImageIcon pionIcoon = pion.getImageIcon();
 
         pionIcoon = new ImageIcon(pionIcoon.getImage()
-            .getScaledInstance(PION_BREEDTE, PION_HOOGTE, Image.SCALE_SMOOTH));
+            .getScaledInstance(60, 100, Image.SCALE_SMOOTH));
 
         setIcon(pionIcoon);
+        setOpaque(false);
     }
 
     public void redraw() {
