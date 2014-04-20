@@ -3,11 +3,11 @@ package ipsen1.quarto.form;
 import ipsen1.quarto.QuartoApplication;
 
 import ipsen1.quarto.business.Pion;
-import ipsen1.quarto.business.Spel;
 
 import ipsen1.quarto.form.bord.BeschikbarePionnenForm;
 import ipsen1.quarto.form.bord.Bord;
 import ipsen1.quarto.form.bord.GeselecteerdePionForm;
+import ipsen1.quarto.form.listener.GeefQuartoAanActionListener;
 import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
@@ -18,23 +18,12 @@ public class BordForm extends Form {
     private final int width = 1024,
                       height = 768;
 
-    private JPanel bord = new Bord(),
-                   beschikbarePionnen = new BeschikbarePionnenForm(),
-                   geselecteerdePionnen = new GeselecteerdePionForm(),
-                   buttonPanel = new ButtonPanel();
-
-    private Spel spel = new Spel();
+    private BeschikbarePionnenForm beschikbarePionnen = new BeschikbarePionnenForm();
+    private ButtonPanel buttonPanel = new ButtonPanel();
+    private Bord bord = new Bord();
+    private GeselecteerdePionForm geselecteerdePion = new GeselecteerdePionForm();
 
     public BordForm() {
-        setupUI();
-    }
-
-    public BordForm(Spel startSpel) {
-        spel = startSpel;
-        setupUI();
-    }
-
-    private void setupUI() {
         setPreferredSize(new Dimension(width, height));
         setLayout(new BorderLayout(0, 0));
         setBackground(QuartoColor.DARK_BROWN);
@@ -46,9 +35,10 @@ public class BordForm extends Form {
         add(bord, BorderLayout.WEST);
 
         JPanel sidebar = new JPanel();
+        sidebar.setBackground(QuartoColor.DARK_BROWN);
         sidebar.setPreferredSize(new Dimension(256, height));
         sidebar.add(beschikbarePionnen);
-        sidebar.add(geselecteerdePionnen);
+        sidebar.add(geselecteerdePion);
         sidebar.add(buttonPanel);
         add(sidebar, BorderLayout.EAST);
     }
@@ -61,8 +51,15 @@ public class BordForm extends Form {
         // TODO: Implementeer mij
     }
 
+    public void plaatsPion(Pion pion) {
+        bord.voegPionToe(pion);
+    }
+
     public void plaatsPion(Pion pion, int x, int y) {
-        // TODO: Implementeer mij
+        pion.setX(x);
+        pion.setY(y);
+
+        plaatsPion(pion);
     }
 
     public void hideForm() { // De naam `hide` bestaat al in JComponent, maar is deprecated
@@ -71,32 +68,46 @@ public class BordForm extends Form {
 
     private void roepQuarto() {
         System.out.println("Iemand roept Quarto!");
-        spel.quartoAangeven();
     }
 
-    public Spel getSpel() {
-        return spel;
+    public Bord getBord() {
+        return bord;
     }
 
-    private class ButtonPanel extends JPanel {
-        private JButton quartoButton = new JButton("Quarto!"),
-                        menuButton = new JButton("Menu");
+    public GeselecteerdePionForm getGeselecteerdePion() {
+        return geselecteerdePion;
+    }
+
+    public BeschikbarePionnenForm getBeschikbarePionnenForm() {
+        return beschikbarePionnen;
+    }
+
+    public ButtonPanel getButtonPanel() {
+        return buttonPanel;
+    }
+
+    public class ButtonPanel extends Form {
+        private JButton quartoButton, menuButton;
+        private GeefQuartoAanActionListener quartoListener;
 
         public ButtonPanel() {
             setPreferredSize(new Dimension(256, 64));
             setLayout(new FlowLayout());
             setBackground(QuartoColor.DARK_BROWN);
 
-            addButtons();
+            redraw();
         }
 
-        private void addButtons() {
-            quartoButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    roepQuarto();
-                }
-            });
+        @Override
+        public void redraw() {
+            removeAll();
+
+            quartoButton = new JButton("Quarto!");
+            menuButton = new JButton("Menu");
+
+            if(quartoListener != null)
+                quartoButton.addActionListener(quartoListener);
+
             menuButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -107,6 +118,10 @@ public class BordForm extends Form {
 
             add(quartoButton);
             add(menuButton);
+        }
+
+        public void setQuartoListener(GeefQuartoAanActionListener quartoListener) {
+            this.quartoListener = quartoListener;
         }
     }
 }

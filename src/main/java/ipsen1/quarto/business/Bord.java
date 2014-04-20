@@ -4,26 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bord {
-    private int[][] matrix;
+    private Pion[][] matrix;
 
-    public final int BOARD_WIDTH = 4,
-                     BOARD_HEIGHT = 4;
+    public final int width = 4,
+                     height = 4;
 
-    private List<int[][]> blackListedCombinaties = new ArrayList<int[][]>();
+    private List<Pion[][]> blackListedCombinaties = new ArrayList<>();
 
     public Bord() {
-        matrix = new int[BOARD_HEIGHT][BOARD_WIDTH];
+        matrix = new Pion[height][width];
+    }
+
+    public void setPion(Pion pion) {
+        matrix[pion.getY()][pion.getX()] = pion;
     }
 
     public void blackListHuidigeCombinatie() {
         blackListedCombinaties.add(matrix.clone());
     }
 
-    public int[][] getMatrix() {
+    public Pion[][] getMatrix() {
         return matrix;
     }
 
-    public List<int[][]> getBlackListedCombinaties() {
+    public List<Pion[][]> getBlackListedCombinaties() {
         return blackListedCombinaties;
     }
 }

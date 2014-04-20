@@ -1,21 +1,25 @@
 package ipsen1.quarto.business;
 
 public class Spel {
-    /**
-     * Is er een Quarto?
-     */
+    // Is er een Quarto?
     private boolean quarto = false;
 
-    private Pion huidigePion;
     private Bord spelBord;
 
+    private Pion geselecteerdePion;
+
     private Speler[] spelers;
-    private int huidigeSpeler = 0;
+    private int aantalSpelers = 2,
+                huidigeSpeler = 0;
 
     private int quartoBeurtTeller = 0;
 
     public Spel() {
         spelers = new Speler[2];
+        spelers[0] = new Speler("Tim");
+        spelers[1] = new Speler("Joshua");
+        verkiesBeginnendeSpeler();
+
         spelBord = new Bord();
     }
 
@@ -23,12 +27,16 @@ public class Spel {
         // TODO: Implementeer mij
     }
 
+    @Deprecated
     public void spelAfsluiten() {
         // TODO: Implementeer mij
     }
 
     public void volgendeSpeler() {
-        // TODO: Implementeer mij
+        huidigeSpeler++;
+
+        if(huidigeSpeler > aantalSpelers - 1)
+            huidigeSpeler = 0;
     }
 
     public boolean isQuarto() {
@@ -48,20 +56,36 @@ public class Spel {
         return spelBord;
     }
 
-    public Pion getHuidigePion() {
-        return huidigePion;
+    public Pion getGeselecteerdePion() {
+        return geselecteerdePion;
     }
 
-    public void setHuidigePion(Pion huidigePion) {
-        this.huidigePion = huidigePion;
+    public void setGeselecteerdePion(Pion geselecteerdePion) {
+        this.geselecteerdePion = geselecteerdePion;
+    }
+
+    public Speler[] getSpelers() {
+        return spelers;
+    }
+
+    public Speler getHuidigeSpeler() {
+        return spelers[huidigeSpeler];
+    }
+
+    public void verwijderGeselecteerdePion() {
+        this.geselecteerdePion = null;
+    }
+
+    private boolean geselecteerdePionIsLeeg() {
+        return geselecteerdePion == null;
     }
 
     public void verkiesBeginnendeSpeler() {
-        // TODO: Implementeer mij
+        huidigeSpeler = (int) Math.floor(Math.random() * aantalSpelers);
     }
 
-    public void plaatsPion() {
-        // TODO: Implementeer mij
+    public void plaatsPion(Pion pion) {
+        spelBord.setPion(pion);
     }
 
     public void slaSpelOp() {
@@ -83,5 +107,23 @@ public class Spel {
 
     public void deactiveerQuartoBeurtTeller() {
         quartoBeurtTeller = 0;
+    }
+
+    public String getStatusText() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<html>");
+
+        sb.append(getHuidigeSpeler().getNaam());
+        sb.append(" is aan de beurt.");
+        sb.append("<br>");
+
+        if(geselecteerdePionIsLeeg())
+            sb.append("Kies een stuk uit voor de tegenstander.");
+        else
+            sb.append("Plaats het stuk.");
+
+        sb.append("</html>");
+
+        return sb.toString();
     }
 }
