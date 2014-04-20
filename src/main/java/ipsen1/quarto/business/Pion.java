@@ -3,7 +3,7 @@ package ipsen1.quarto.business;
 import javax.swing.ImageIcon;
 import java.io.Serializable;
 
-public class Pion implements Serializable{
+public class Pion implements Serializable {
     private Vorm vorm;
     private Kleur kleur;
     private Hoogte hoogte;

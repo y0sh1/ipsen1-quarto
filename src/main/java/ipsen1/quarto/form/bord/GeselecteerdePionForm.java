@@ -2,6 +2,7 @@ package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
 
+import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.form.pionnen.PionLabel;
 import ipsen1.quarto.util.QuartoColor;

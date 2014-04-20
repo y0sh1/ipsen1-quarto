@@ -5,13 +5,13 @@ import ipsen1.quarto.factory.Pionnen;
 
 import java.io.Serializable;
 
-public class Spel implements Serializable{
+public class Spel implements Serializable {
     // Is er een Quarto?
     private boolean quarto = false;
 
     private Bord spelBord;
 
-    private Pionnen resterendePionnen;
+    private Pionnen resterendePionnen, geplaatstePionnen;
     private Pion geselecteerdePion;
 
     private Speler[] spelers;
@@ -27,6 +27,7 @@ public class Spel implements Serializable{
         };
         verkiesBeginnendeSpeler();
         resterendePionnen = Pionnen.all();
+        geplaatstePionnen = new Pionnen();
         spelBord = new Bord();
     }
 
@@ -49,15 +50,13 @@ public class Spel implements Serializable{
         this.quarto = quarto;
     }
 
-    public Pion[] getGeplaatstePionnen() {
-        // TODO: Implementeer mij
-        return new Pion[0];
+    public Pionnen getGeplaatstePionnen() {
+        return geplaatstePionnen;
     }
 
     public Bord getBord() {
         return spelBord;
     }
-
 
     public Pion getGeselecteerdePion() {
         return geselecteerdePion;
@@ -93,15 +92,9 @@ public class Spel implements Serializable{
     }
 
     public boolean plaatsPion(Pion pion) {
+        geplaatstePionnen.add(pion);
+        resterendePionnen.remove(pion);
         return spelBord.setPion(pion);
-    }
-
-    public void slaSpelOp() {
-        // TODO: Implementeer mij
-    }
-
-    public void laadSaveGame() {
-        // TODO: Implementeer mij
     }
 
     public int getQuartoBeurtTeller() {
@@ -130,12 +123,7 @@ public class Spel implements Serializable{
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
 
-        if(isQuarto()) {
-            sb.append("Quarto!");
-            sb.append("<br>");
-            sb.append(getHuidigeSpeler().getNaam());
-            sb.append(" heeft gewonnen.");
-        } else if(resterendePionnen.size() == 0) {
+        if(resterendePionnen.size() == 0) {
             sb.append("Gelijkspel!");
             sb.append("<br>");
             sb.append("Er zijn geen stukken meer over.");
