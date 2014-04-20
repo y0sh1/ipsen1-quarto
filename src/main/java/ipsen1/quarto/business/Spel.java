@@ -3,7 +3,9 @@ package ipsen1.quarto.business;
 import ipsen1.quarto.task.SluitSpelAf;
 import ipsen1.quarto.factory.Pionnen;
 
-public class Spel {
+import java.io.Serializable;
+
+public class Spel implements Serializable{
     // Is er een Quarto?
     private boolean quarto = false;
 

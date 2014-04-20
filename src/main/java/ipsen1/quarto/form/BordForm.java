@@ -8,6 +8,7 @@ import ipsen1.quarto.form.bord.BeschikbarePionnenForm;
 import ipsen1.quarto.form.bord.Bord;
 import ipsen1.quarto.form.bord.GeselecteerdePionForm;
 import ipsen1.quarto.form.listener.GeefQuartoAanActionListener;
+import ipsen1.quarto.form.listener.SpelOpslaanListener;
 import ipsen1.quarto.util.QuartoColor;
 
 import javax.swing.*;
@@ -97,6 +98,7 @@ public class BordForm extends Form {
     public class ButtonPanel extends Form {
         private JButton quartoButton, menuButton;
         private GeefQuartoAanActionListener quartoListener;
+        private SpelOpslaanListener opslaanListener;
 
         public ButtonPanel() {
             setPreferredSize(new Dimension(256, 64));
@@ -130,6 +132,9 @@ public class BordForm extends Form {
 
         public void setQuartoListener(GeefQuartoAanActionListener quartoListener) {
             this.quartoListener = quartoListener;
+        }
+        public void setSpelOpslaanListener(SpelOpslaanListener opslaanListener){
+            this.opslaanListener = opslaanListener;
         }
     }
 }

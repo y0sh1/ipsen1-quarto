@@ -1,6 +1,7 @@
 package ipsen1.quarto.form;
 
 import ipsen1.quarto.QuartoApplication;
+import ipsen1.quarto.business.Spel;
 import ipsen1.quarto.form.menu.MenuButton;
 import ipsen1.quarto.form.pionnen.PionButton;
 import ipsen1.quarto.task.LaadSpel;
@@ -18,11 +19,13 @@ import java.awt.event.ActionListener;
 public class InGameMenu extends Form {
     private static final String BACKGROUND_FILENAME = "src/main/resources/hout_achtergrond.jpg";
     private static Image background = new ImageIcon(BACKGROUND_FILENAME).getImage();
+    private Spel huidigespel;
 
     public InGameMenu() {
         setPreferredSize(new Dimension(1024, 768));
         setLayout(new BorderLayout());
 
+        // Tekenen Gui Componenten
         JLabel pauseLabel = new JLabel("Gepauzeerd", SwingConstants.CENTER);
         pauseLabel.setFont(FontOpenSans.create(48));
         pauseLabel.setForeground(Color.WHITE);
@@ -56,7 +59,7 @@ public class InGameMenu extends Form {
         savebutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new OpslaanSpel().run();
+                new OpslaanSpel(huidigespel).run();
             }
         });
 
