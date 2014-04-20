@@ -1,6 +1,7 @@
 package ipsen1.quarto.form.bord;
 
 import ipsen1.quarto.business.Pion;
+import ipsen1.quarto.factory.Pionnen;
 import ipsen1.quarto.form.Form;
 import ipsen1.quarto.form.listener.KiesPionActionListener;
 import ipsen1.quarto.form.pionnen.PionButton;
@@ -10,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BeschikbarePionnenForm extends Form {
-    private Pion[] beschikbarePionnen;
+    private Pionnen beschikbarePionnen;
     private JPanel pionnenButtonsPanel = new JPanel();
 
     public BeschikbarePionnenForm() {
@@ -42,7 +43,7 @@ public class BeschikbarePionnenForm extends Form {
         this.kiesPionListener = kiesPionListener;
     }
 
-    private void voegPionnenToe(Pion[] pionnen) {
+    private void voegPionnenToe(Pionnen pionnen) {
         for(Pion pion : pionnen) {
             JButton btn = new PionButton(pion);
             if(kiesPionListener != null)
@@ -52,7 +53,7 @@ public class BeschikbarePionnenForm extends Form {
         }
     }
 
-    public void setBeschikbarePionnen(Pion[] beschikbarePionnen) {
+    public void setBeschikbarePionnen(Pionnen beschikbarePionnen) {
         this.beschikbarePionnen = beschikbarePionnen;
     }
 }

@@ -1,13 +1,17 @@
 package ipsen1.quarto.business;
 
 import ipsen1.quarto.task.SluitSpelAf;
+import ipsen1.quarto.factory.Pionnen;
 
-public class Spel {
+import java.io.Serializable;
+
+public class Spel implements Serializable{
     // Is er een Quarto?
     private boolean quarto = false;
 
     private Bord spelBord;
 
+    private Pionnen resterendePionnen;
     private Pion geselecteerdePion;
 
     private Speler[] spelers;
@@ -21,6 +25,8 @@ public class Spel {
             new Speler("Speler 1"),
             new Speler("Speler 2")
         };
+        verkiesBeginnendeSpeler();
+        resterendePionnen = Pionnen.all();
         spelBord = new Bord();
     }
 
@@ -114,6 +120,10 @@ public class Spel {
 
     public void deactiveerQuartoBeurtTeller() {
         quartoBeurtTeller = 0;
+    }
+
+    public Pionnen getResterendePionnen() {
+        return resterendePionnen;
     }
 
     public String getStatusText() {

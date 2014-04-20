@@ -1,6 +1,8 @@
 package ipsen1.quarto.business;
 
-public class Speler {
+import java.io.Serializable;
+
+public class Speler implements Serializable {
     private String naam;
 
     public Speler(String naam) {
