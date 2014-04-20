@@ -17,16 +17,11 @@ public class Spel {
     private int quartoBeurtTeller = 0;
 
     public Spel() {
-        spelers = new Speler[2];
-        spelers[0] = new Speler("Tim");
-        spelers[1] = new Speler("Joshua");
-        verkiesBeginnendeSpeler();
-
+        spelers = new Speler[] {
+            new Speler("Speler 1"),
+            new Speler("Speler 2")
+        };
         spelBord = new Bord();
-    }
-
-    public void quartoAangeven() {
-        // TODO: Implementeer mij
     }
 
     public void spelAfsluiten() {
@@ -68,6 +63,11 @@ public class Spel {
 
     public Speler[] getSpelers() {
         return spelers;
+    }
+
+    public void setSpelers(Speler[] spelers) {
+        this.spelers = spelers;
+        verkiesBeginnendeSpeler();
     }
 
     public Speler getHuidigeSpeler() {
