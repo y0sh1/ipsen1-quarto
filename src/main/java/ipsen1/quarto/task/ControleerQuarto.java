@@ -11,7 +11,6 @@ public class ControleerQuarto extends Task {
     private Spel spel;
     private Bord bord;
     private List<int[]> blacklistedcombinaties;
-    private boolean staatQuartoBeurtTellerAan;
     private Pion[][] matrix;
     private int[] combinatie;
 
@@ -27,6 +26,7 @@ public class ControleerQuarto extends Task {
 
     @Override
     public void execute() {
+        boolean staatQuartoBeurtTellerAan;
         matrix = bord.getMatrix();
         blacklistedcombinaties = bord.getBlackListedCombinaties();
         staatQuartoBeurtTellerAan = spel.staatQuartoBeurtTellerAan();
@@ -57,12 +57,7 @@ public class ControleerQuarto extends Task {
     }
 
     private boolean isGeldigeQuarto() {
-        if(horizontalCheck() || verticalCheck() || diagonalCheck()) {
-            return true;
-        }
-
-        System.out.println("isGeldigeQuart() == false");
-        return false;
+        return horizontalCheck() || verticalCheck() || diagonalCheck();
     }
 
     public boolean horizontalCheck() {
