@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class VlakButton extends JButton {
-    private static final ImageIcon VAKJE_ICOON = new ImageIcon("Vakje.png");
+    private static final ImageIcon VAKJE_ICOON = new ImageIcon(VlakButton.class.getResource("/Vakje.png"));
 
     private int x = 0, y = 0;
     private final int width = 120, height = 120;

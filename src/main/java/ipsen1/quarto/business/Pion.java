@@ -67,13 +67,13 @@ public class Pion implements Serializable {
     }
 
     public ImageIcon getImageIcon() {
-        return new ImageIcon(this.toFileName());
+        return new ImageIcon(getClass().getResource(this.toFileName()));
     }
 
     /**
      * Basispad naar de map met pion-afbeeldingen
      */
-    private static final String BASE_PATH = "pionnen/",
+    private static final String BASE_PATH = "/pionnen/",
                                IMAGE_EXTENSION = ".png";
 
     public enum Vorm {
