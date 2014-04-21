@@ -27,3 +27,7 @@ Once a shared row is made, the player needs to yell `"QUARTO!"` to win a round.
 If the current player does not see the matching row, but the opponent does, he may yell `"QUARTO!"` once his new pawn is retrieved.
 
 If both players do not see the matching row within 1 turn, the row becomes 'invalid' and `"QUARTO"` may not be yelled upon that row.
+
+## Building a JAR ##
+
+To build a jar, run `mvn jar:jar`. You can find the jar in the `target/` folder.
