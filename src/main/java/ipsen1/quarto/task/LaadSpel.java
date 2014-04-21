@@ -6,7 +6,7 @@ import ipsen1.quarto.form.BordForm;
 import ipsen1.quarto.form.Hoofdmenu;
 import ipsen1.quarto.form.InGameMenu;
 
-import javax.swing.JFileChooser;
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -45,13 +45,17 @@ public class LaadSpel extends Task {
             ObjectInputStream ois = new ObjectInputStream(fis);
             spel = (Spel) ois.readObject();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            e.printStackTrace();
+            konSpelNietLaden();
             return false;
         } catch (IOException e) {
-            e.printStackTrace();
+            konSpelNietLaden();
             return false;
         }
         return true;
+    }
+
+    private void konSpelNietLaden() {
+        final String message = "Kon het spel niet laden!";
+        JOptionPane.showMessageDialog(bord, message, "Fout", JOptionPane.ERROR_MESSAGE);
     }
 }

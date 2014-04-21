@@ -1,5 +1,6 @@
 package ipsen1.quarto.task;
 
+import ipsen1.quarto.QuartoApplication;
 import ipsen1.quarto.business.Spel;
 
 import javax.swing.*;
@@ -41,9 +42,13 @@ public class OpslaanSpel extends Task {
             String title = "Spel opslaan";
             JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, null);
         } catch (IOException e) {
-            e.printStackTrace();
+            konSpelNietOpslaan();
         }
+    }
 
-
+    private void konSpelNietOpslaan() {
+        final String message = "Kon het spel niet opslaan!";
+        JOptionPane.showMessageDialog(QuartoApplication.currentApplication().currentForm(),
+                message, "Fout", JOptionPane.ERROR_MESSAGE);
     }
 }
